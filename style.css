@@ -3,14 +3,13 @@
 
    Stíluslap struktúra:
    1. Változók és alapbeállítások
-   2. Felső navigációs sáv
-   3. Szerzői bemutatkozó banner
-   4. Kiemelt szekció (Top 3)
-   5. Eszköztár (szűrők, kereső, nézetváltó)
-   6. Podcast alszűrő sáv
-   7. Kártya rács nézet
-   8. Szerkesztőségi lista nézet
-   9. Lábléc és elérhetőségek
+   2. Szerzői bemutatkozó banner
+   3. Kiemelt szekció (Top 3)
+   4. Eszköztár (szűrők, kereső)
+   5. Kategória alszűrő sáv
+   6. Platform jelvények & Közös elemek
+   7. Szerkesztőségi lista nézet
+   8. Lábléc és elérhetőségek
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -30,9 +29,10 @@
     --text-muted: #646470;
 
     /* Kategória és Platform Színek */
-    --platform-hvg: #f26522;      /* HVG meleg terrakotta */
-    --platform-youtube: #ef4444;  /* YouTube vörös */
-    --platform-podcast: #10b981;  /* Podcast smaragdzöld */
+    --platform-hvg: #f26522;        /* HVG meleg terrakotta */
+    --platform-hvg-pulzus: #7250c0; /* HVG Pulzus lila (--pulse-400) */
+    --platform-youtube: #ef4444;    /* YouTube vörös */
+    --platform-podcast: #10b981;    /* Podcast smaragdzöld */
     --accent-gold: #eab308;
 
     --font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
@@ -69,7 +69,7 @@ body {
 }
 
 /* ==========================================================================
-   3. Szerzői bemutatkozó banner
+   2. Szerzői bemutatkozó banner
    ========================================================================== */
 .author-banner {
     position: relative;
@@ -107,27 +107,6 @@ body {
     max-width: 620px;
 }
 
-.author-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-secondary);
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.author-eyebrow::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    background: #ffffff;
-    border-radius: 50%;
-}
-
 .author-title {
     font-family: var(--font-serif);
     font-size: clamp(32px, 5vw, 44px);
@@ -148,7 +127,8 @@ body {
 .author-links-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    align-items: center;
+    gap: 12px 16px;
 }
 
 .author-link {
@@ -160,6 +140,25 @@ body {
     align-items: center;
     gap: 4px;
     transition: var(--transition);
+}
+
+.author-link.highlight-red,
+.author-link.highlight-green {
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+}
+
+.author-link.highlight-red {
+    border-color: rgba(225, 29, 72, 0.5);
+    color: #fda4af;
+    background: rgba(225, 29, 72, 0.08);
+}
+
+.author-link.highlight-green {
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #86efac;
+    background: rgba(34, 197, 94, 0.08);
 }
 
 .author-link:hover {
@@ -267,6 +266,11 @@ body {
         padding: 24px;
         gap: 20px;
     }
+    .author-watermark {
+        right: -40px;
+        width: 260px;
+        opacity: 0.08;
+    }
     .author-avatar-box {
         width: 140px;
         height: 165px;
@@ -274,7 +278,7 @@ body {
 }
 
 /* ==========================================================================
-   4. Kiemelt szekció (Top 3)
+   3. Kiemelt szekció (Top 3)
    ========================================================================== */
 .featured-section {
     margin-bottom: 36px;
@@ -461,7 +465,7 @@ body {
 }
 
 /* ==========================================================================
-   5. Eszköztár (szűrők, kereső, nézetváltó)
+   4. Eszköztár (szűrők, kereső)
    ========================================================================== */
 .toolbar-container {
     display: flex;
@@ -558,39 +562,14 @@ body {
     background: var(--bg-surface-elevated);
 }
 
-.view-toggle-group {
-    display: inline-flex;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 2px;
-}
-
-.view-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 5px 8px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-}
-
-.view-btn.active {
-    background: var(--bg-surface-elevated);
-    color: #ffffff;
-}
-
 /* ==========================================================================
-   6. Podcast alszűrő sáv
+   5. Kategória alszűrő sáv
    ========================================================================== */
 .subfilter-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 8px 12px;
     margin-top: -14px;
     margin-bottom: 24px;
     padding: 10px 16px;
@@ -639,15 +618,31 @@ body {
 .subfilter-tab.active {
     background: var(--bg-surface-elevated);
     color: #ffffff;
+    border-color: var(--border-strong);
+}
+
+.subfilter-container[data-platform="hvg"] .subfilter-tab.active {
+    border-color: var(--platform-hvg);
+}
+
+.subfilter-container[data-platform="hvg"] .subfilter-tab.active[data-subfilter="pulzus"] {
+    border-color: var(--platform-hvg-pulzus);
+}
+
+.subfilter-container[data-platform="youtube"] .subfilter-tab.active {
+    border-color: var(--platform-youtube);
+}
+
+.subfilter-container[data-platform="podcast"] .subfilter-tab.active {
     border-color: var(--platform-podcast);
 }
 
-.subfilter-tab.active[data-subfilter="guest"] {
+.subfilter-container[data-platform="podcast"] .subfilter-tab.active[data-subfilter="guest"] {
     border-color: #22c55e;
 }
 
-.subfilter-tab.active[data-subfilter="editor"] {
-    border-color: #a855f7;
+.subfilter-container[data-platform="podcast"] .subfilter-tab.active[data-subfilter="editor"] {
+    border-color: #be3c55;
 }
 
 .subfilter-tab .sub-count {
@@ -666,62 +661,8 @@ body {
 }
 
 /* ==========================================================================
-   7. Kártya rács nézet
+   6. Platform jelvények & Közös elemek
    ========================================================================== */
-.view-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
-}
-
-.grid-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-}
-
-.grid-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-strong);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
-}
-
-.card-thumb-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    overflow: hidden;
-}
-
-.card-thumb-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-    opacity: 0.92;
-}
-
-.grid-card:hover .card-thumb-wrap img {
-    transform: scale(1.04);
-    opacity: 1;
-}
-
-.card-badge-top {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 2;
-}
-
-/* Platform & Column Jelvények */
 .platform-pill {
     display: inline-flex;
     align-items: center;
@@ -744,6 +685,12 @@ body {
     border: 1px solid rgba(242, 101, 34, 0.9);
 }
 
+.platform-pill.hvg-pulzus {
+    background: rgba(20, 13, 36, 0.94);
+    color: #c0b1e3;
+    border: 1px solid rgba(130, 99, 199, 0.9);
+}
+
 .platform-pill.youtube {
     background: rgba(28, 8, 8, 0.94);
     color: #ff8888;
@@ -757,9 +704,9 @@ body {
 }
 
 .platform-pill.podcast-editor {
-    background: rgba(22, 12, 32, 0.94);
-    color: #d8b4fe;
-    border: 1px solid rgba(168, 85, 247, 0.9);
+    background: rgba(34, 12, 18, 0.94);
+    color: #f4a2b0;
+    border: 1px solid rgba(190, 60, 85, 0.85);
 }
 
 .platform-pill.podcast-guest {
@@ -776,89 +723,9 @@ body {
     box-shadow: 0 0 12px rgba(225, 29, 72, 0.6);
 }
 
-.card-readtime-top {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.85);
-    padding: 3px 7px;
-    border-radius: 4px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-    z-index: 2;
-}
-
-.card-body {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.card-meta-line {
-    font-family: var(--font-mono);
+.platform-source-label {
     font-size: 11px;
     color: var(--text-muted);
-    margin-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.card-headline {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.2px;
-    color: #ffffff;
-    margin-bottom: 10px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.card-lead {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    margin-bottom: 16px;
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* Kiemelt Spotlight Kártya Stílus (pl. 24.hu Ziccer vendégszereplés) */
-.grid-card.spotlight-card {
-    border: 1px solid rgba(225, 29, 72, 0.75);
-    background: linear-gradient(180deg, rgba(225, 29, 72, 0.09) 0%, var(--bg-surface) 40%);
-    box-shadow: 0 4px 24px rgba(225, 29, 72, 0.2);
-    position: relative;
-}
-
-.grid-card.spotlight-card:hover {
-    border-color: #f43f5e;
-    box-shadow: 0 8px 32px rgba(225, 29, 72, 0.35);
-}
-
-.horizontal-card.spotlight-card {
-    border: 1px solid rgba(225, 29, 72, 0.75);
-    background: linear-gradient(90deg, rgba(225, 29, 72, 0.09) 0%, var(--bg-surface) 35%);
-    box-shadow: 0 4px 24px rgba(225, 29, 72, 0.2);
-}
-
-.card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid var(--border-subtle);
-    font-size: 12px;
 }
 
 .action-trigger-text {
@@ -870,39 +737,74 @@ body {
     transition: var(--transition);
 }
 
-.grid-card:hover .action-trigger-text {
+.empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--text-secondary);
+    border: 1px dashed var(--border-subtle);
+    border-radius: var(--radius-md);
+}
+
+.empty-state-title {
+    font-size: 16px;
+    font-weight: 600;
     color: #ffffff;
-    transform: translateX(2px);
+    margin-bottom: 6px;
+}
+
+.empty-state-desc {
+    font-size: 13px;
 }
 
 /* ==========================================================================
-   8. Szerkesztőségi lista nézet
+   7. Szerkesztőségi lista nézet
    ========================================================================== */
 .view-horizontal {
     display: flex;
     flex-direction: column;
+    gap: 18px;
 }
 
 .horizontal-card {
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 24px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border-subtle);
+    padding: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-    transition: background-color var(--transition);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-.horizontal-card:first-child {
-    border-top: 1px solid var(--border-subtle);
+.horizontal-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38);
+}
+
+.horizontal-card.spotlight-card {
+    border: 1px solid rgba(225, 29, 72, 0.75);
+    background: linear-gradient(90deg, rgba(225, 29, 72, 0.09) 0%, var(--bg-surface) 35%);
+    box-shadow: 0 4px 24px rgba(225, 29, 72, 0.2);
+}
+
+.horizontal-card.spotlight-card:hover {
+    border-color: #f43f5e;
+    box-shadow: 0 8px 32px rgba(225, 29, 72, 0.35);
 }
 
 .horizontal-card:hover .h-headline {
     color: #ffffff;
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+.horizontal-card:hover .action-trigger-text {
+    color: #ffffff;
+    transform: translateX(2px);
 }
 
 .h-thumb-box {
@@ -934,8 +836,9 @@ body {
 
 .h-meta-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 6px 10px;
     margin-bottom: 8px;
     font-family: var(--font-mono);
     font-size: 12px;
@@ -964,20 +867,40 @@ body {
 }
 
 .h-footer {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 8px 12px;
 }
 
 @media (max-width: 680px) {
+    .site-container {
+        padding: 20px 14px 60px 14px;
+    }
+    .featured-section {
+        padding: 18px 16px 20px 16px;
+    }
+    .filter-group,
+    .toolbar-right,
+    .search-box {
+        width: 100%;
+    }
     .horizontal-card {
         grid-template-columns: 1fr;
         gap: 14px;
+        padding: 16px;
+    }
+    .h-headline {
+        font-size: 18px;
     }
 }
 
 /* ==========================================================================
-   9. Lábléc és elérhetőségek
+   8. Lábléc és elérhetőségek
    ========================================================================== */
 
 .site-footer {
@@ -1001,6 +924,34 @@ body {
 .footer-brand {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-medium);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.brand-name {
+    font-weight: 700;
+    color: #ffffff;
+    margin-left: 8px;
+}
+
+.brand-tagline {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-left: 8px;
 }
 
 .footer-social-links {

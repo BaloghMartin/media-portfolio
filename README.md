@@ -9,30 +9,31 @@ Az oldal három egyenrangú kategóriában mutatja be a médiatartalmakat:
 
 | Kategória | Darabszám | Leírás |
 |-----------|-----------|--------|
-| 📰 HVG Cikkek | 11 | Külsős szerzői publikációk a hvg.hu-n (Tech, hvg360, Gazdaság rovatok) |
+| 📰 HVG Cikkek | 14 | Külsős szerzői publikációk a hvg.hu-n (Tech, hvg360, Pulzus, Gazdaság rovatok) |
 | 🎬 YouTube Videók | 5 | Saját műsorok, hardverteszt, 24.hu Ziccer vendégszereplés, FPL Harry nemzetközi elemzés |
-| 🎙️ Podcastok | 22 | 1 Fantasy Besztlíg vendégadás, 7 Kommcast riporteri munka, 14 Kommcast vágói adás |
+| 🎙️ Podcastok | 24 | 1 Fantasy Besztlíg vendégadás, 7 Kommcast riporteri munka, 16 Kommcast vágói adás |
 
-**Összesen: 38 ellenőrzött médiatartalom.**
+**Összesen: 43 ellenőrzött médiatartalom.**
 
 ## Funkciók
 
-- **Kiemelt szekció:** mindhárom platform legfrissebb tartalma kiemelve az oldal tetején
+- **Kiemelt szekció:** mindhárom platform legfrissebb tartalma kiemelt kártyaként az oldal tetején
 - **Időrendi sorrend:** legújabbtól a legrégebbi felé (2026 → 2024)
-- **Kategóriaszűrés:** Összes / HVG / YouTube / Podcast fülekkel
-- **Podcast alszűrő:** Vendég / Riporter / Vágó szerepkörök szerinti bontás
-- **Kettős nézet:** kártya rács és szerkesztőségi lista nézet
+- **Kategóriaszűrés & Alszűrők:** Összes / HVG (HVG360, Tech, Pulzus, Gazdaság) / YouTube (Saját, Vendég) / Podcast (Vendég, Riporter, Vágó) bontásban
+- **Szerkesztőségi lista nézet:** teljes szélességű, részletes tartalomkártyák a fő listában
 - **Élő keresés:** cím, bevezető, rovat és címkék alapján
 - **Közvetlen megnyitás:** kattintásra azonnal megnyílik a tartalom új lapon
 
 ## Technikai felépítés
 
 ```
-index.html    – az oldal HTML struktúrája
+index.html    – az oldal HTML struktúrája és SEO metaadatai
 style.css     – megjelenés és reszponzív elrendezés
-data.js       – MEDIA_DATABASE tömb (38 elem, kézzel ellenőrzött adatok)
+data.js       – MEDIA_DATABASE tömb (43 elem, kézzel ellenőrzött adatok)
 app.js        – kliensoldali logika (szűrés, keresés, renderelés)
-assets/       – borítóképek (hvg/, youtube/, podcasts/, author.jpg)
+assets/       – borítóképek (hvg/, youtube/, podcasts/, author.jpg, favicon.svg)
+robots.txt    – keresőmotorok indexelési útmutatója
+sitemap.xml   – oldaltérkép a keresőmotorokhoz
 ```
 
 **Külső függőségek:** nincs (tiszta Vanilla JS + CSS).
@@ -40,10 +41,9 @@ assets/       – borítóképek (hvg/, youtube/, podcasts/, author.jpg)
 
 ## Megtekintés
 
-Nyisd meg a böngészőben:
-```
-file:///Users/baloghmartin/.gemini/antigravity/scratch/szte-jgypk-portfolio/index.html
-```
+Élő oldal: [baloghmartin.com](https://baloghmartin.com)
+
+Helyi megtekintéshez nyisd meg az `index.html` fájlt böngészőben, vagy indíts helyi statikus szervert a projekt mappájában (`python3 -m http.server`).
 
 ## Elérhetőségek
 
