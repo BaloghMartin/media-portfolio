@@ -50,8 +50,10 @@ const SUBFILTER_CONFIG = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+    const db = typeof MEDIA_DATABASE !== "undefined" ? MEDIA_DATABASE : [];
+
     // Szigorú időrendi rendezés: legfrissebb elöl
-    mediaItems = [...MEDIA_DATABASE].sort((a, b) =>
+    mediaItems = [...db].sort((a, b) =>
         (b.isoDate || "").localeCompare(a.isoDate || "")
     );
 
@@ -103,7 +105,7 @@ function renderFeaturedRow() {
         const card = createLinkCard(item, "featured-card");
         card.innerHTML = `
             <div class="featured-thumb-wrap">
-                <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
+                <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}">
                 <div class="featured-badge-top">
                     <span class="platform-pill ${pillClass}">★ ${resolvedPillText}</span>
                 </div>
@@ -151,16 +153,16 @@ function renderContent() {
     if (!container) return;
 
     container.innerHTML = "";
-    const query = currentSearch.toLowerCase().trim();
+    const query = normalizeText(currentSearch.trim());
 
     const filtered = mediaItems.filter(item => {
         const matchesFilter = currentFilter === "all" || item.platform === currentFilter;
         const matchesSubFilter = currentFilter === "all" || currentSubFilter === "all" || item.subCategory === currentSubFilter;
         const matchesSearch = !query ||
-            item.title.toLowerCase().includes(query) ||
-            item.lead.toLowerCase().includes(query) ||
-            (item.column && item.column.toLowerCase().includes(query)) ||
-            (item.tags && item.tags.some(t => t.toLowerCase().includes(query)));
+            normalizeText(item.title).includes(query) ||
+            normalizeText(item.lead).includes(query) ||
+            normalizeText(item.column).includes(query) ||
+            (item.tags && item.tags.some(t => normalizeText(t).includes(query)));
 
         return matchesFilter && matchesSubFilter && matchesSearch;
     });
@@ -217,7 +219,7 @@ function getPlatformBadge(item) {
 }
 
 function getActionLabel(item) {
-    if (item.isSpotlight) return "24.hu Ziccer vendégadás megtekintése (18:44) ▶ ↗";
+    if (item.actionLabel) return escapeHtml(item.actionLabel);
     if (item.platform === "youtube") return "Videó megtekintése a YouTube-on ↗";
     if (item.platform === "podcast") {
         if (item.subCategory === "editor") return "Teljes adás a YouTube-on (vágó) ↗";
@@ -360,6 +362,13 @@ function initEmailCopy() {
             });
         });
     });
+}
+
+function normalizeText(text) {
+    return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 }
 
 function escapeHtml(text) {

@@ -1,7 +1,7 @@
 # Balogh Martin — Független Média Portfólió
 
 > Személyes médiaalkotói portfólió és archívum weboldal.
-> SZTE Kommunikáció- és médiatudomány BA szakos hallgató munkái.
+> Független újságíró és tartalomgyártó (HVG, YouTube, Kommcast) munkái.
 
 ## Tartalom
 
