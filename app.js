@@ -2,15 +2,6 @@
  * Balogh Martin — Független Média Portfólió (app.js)
  *
  * Kliensoldali alkalmazáslogika – tiszta Vanilla JavaScript, külső függőség nélkül.
- *
- * Funkciók:
- *   1. Kiemelt szekció: mindhárom platform (HVG, YouTube, Podcast) legfrissebb tartalma kártyánként
- *   2. Teljes szélességű szerkesztőségi lista: időrendi sorrend (legújabbtól a legrégebbi felé)
- *   3. Közvetlen megnyitás: kattintásra azonnal megnyílik a tartalom új lapon
- *   4. Kategóriaszűrés & Alszűrők: HVG (HVG360, Tech, Pulzus, Gazdaság), YouTube (Saját, Vendég), Podcast (Vendég, Riporter, Vágó)
- *   5. Valós idejű keresés: cím, bevezető, rovat és címkék alapján
- *   6. Spambot-védett e-mail cím vágólapra másolás
- *
  * A média adatbázist a data.js MEDIA_DATABASE tömbje szolgáltatja.
  */
 
@@ -18,6 +9,29 @@ let currentFilter = "all";
 let currentSubFilter = "all";
 let currentSearch = "";
 let mediaItems = [];
+
+const MONTHS = [
+    "január", "február", "március", "április", "május", "június",
+    "július", "augusztus", "szeptember", "október", "november", "december"
+];
+
+const FEATURED_CONFIG = [
+    {
+        platform: "hvg",
+        pillText: "Legfrissebb HVG Cikk",
+        actionLabel: "Cikk olvasása a hvg.hu-n ↗"
+    },
+    {
+        platform: "youtube",
+        pillText: "Legfrissebb YouTube Műsor",
+        actionLabel: "Megtekintés a YouTube-on ↗"
+    },
+    {
+        platform: "podcast",
+        pillText: "Legfrissebb Podcast Adás",
+        actionLabel: "Adás meghallgatása ↗"
+    }
+];
 
 const SUBFILTER_CONFIG = {
     hvg: {
@@ -49,224 +63,148 @@ const SUBFILTER_CONFIG = {
     }
 };
 
+const PODCAST_BADGES = {
+    guest: ["podcast-guest", "★ Vendégszereplés"],
+    editor: ["podcast-editor", "Kommcast • Vágó"],
+    reporter: ["podcast", "🎙️ Kommcast • Riporter"]
+};
+
+const PODCAST_ACTIONS = {
+    editor: "Teljes adás a YouTube-on (vágó) ↗",
+    guest: "Adás meghallgatása a Spotify-on 🎧 ↗",
+    reporter: "Adás meghallgatása (riporter) 🎙️ ↗"
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     const db = typeof MEDIA_DATABASE !== "undefined" ? MEDIA_DATABASE : [];
 
     // Szigorú időrendi rendezés: legfrissebb elöl
-    mediaItems = [...db].sort((a, b) =>
-        (b.isoDate || "").localeCompare(a.isoDate || "")
-    );
+    mediaItems = [...db].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
     renderFeaturedRow();
-    updateFilterCounts();
+    initFilters();
     renderSubfilterBar();
     renderContent();
-    initFilters();
     initSearch();
     initEmailCopy();
 });
 
-/* ==========================================================================
-   1. Kiemelt Szekció (Top 3: Legfrissebb HVG Cikk, YouTube Videó, Podcast)
-   ========================================================================== */
 function renderFeaturedRow() {
     const featuredGrid = document.getElementById("featuredGrid");
     if (!featuredGrid) return;
 
-    featuredGrid.innerHTML = "";
-
-    const featuredConfig = [
-        {
-            platform: "hvg",
-            pillText: "Legfrissebb HVG Cikk",
-            actionLabel: "Cikk olvasása a hvg.hu-n ↗"
-        },
-        {
-            platform: "youtube",
-            pillText: "Legfrissebb YouTube Műsor",
-            actionLabel: "Megtekintés a YouTube-on ↗"
-        },
-        {
-            platform: "podcast",
-            pillText: "Legfrissebb Podcast Adás",
-            actionLabel: "Adás meghallgatása ↗"
-        }
-    ];
-
-    featuredConfig.forEach(({ platform, pillText, actionLabel }) => {
+    featuredGrid.innerHTML = FEATURED_CONFIG.map(({ platform, pillText, actionLabel }) => {
         const item = mediaItems.find(entry => entry.platform === platform);
-        if (!item) return;
+        if (!item) return "";
 
-        const isPulzus = item.platform === "hvg" && item.subCategory === "pulzus";
+        const isPulzus = platform === "hvg" && item.subCategory === "pulzus";
         const pillClass = isPulzus ? "hvg-pulzus" : platform;
         const resolvedPillText = isPulzus ? "Legfrissebb HVG Pulzus Cikk" : pillText;
         const resolvedActionLabel = isPulzus ? "Cikk olvasása a HVG Pulzuson ↗" : actionLabel;
 
-        const card = createLinkCard(item, "featured-card");
-        card.innerHTML = `
-            <div class="featured-thumb-wrap">
-                <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}">
-                <div class="featured-badge-top">
-                    <span class="platform-pill ${pillClass}">★ ${resolvedPillText}</span>
+        return `
+            <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="featured-card" title="${escapeHtml(item.title)} — Megnyitás új lapon">
+                <div class="featured-thumb-wrap">
+                    <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}">
+                    <div class="featured-badge-top">
+                        <span class="platform-pill ${pillClass}">★ ${resolvedPillText}</span>
+                    </div>
+                    <div class="featured-metric-top">${escapeHtml(item.readTime)}</div>
                 </div>
-                <div class="featured-metric-top">${escapeHtml(item.readTime)}</div>
-            </div>
-            <div class="featured-body">
-                <div class="featured-meta-line">
-                    <span>${escapeHtml(item.date)}</span>
-                    <span>${escapeHtml(item.column)}</span>
+                <div class="featured-body">
+                    <div class="featured-meta-line">
+                        <span>${escapeHtml(formatDate(item.date))}</span>
+                        <span>${escapeHtml(item.column)}</span>
+                    </div>
+                    <h3 class="featured-headline">${escapeHtml(item.title)}</h3>
+                    <p class="featured-lead">${escapeHtml(item.lead)}</p>
+                    <div class="featured-footer">
+                        <span class="platform-source-label">${escapeHtml(item.platformLabel)}</span>
+                        <span class="action-trigger-text">${resolvedActionLabel}</span>
+                    </div>
                 </div>
-                <h3 class="featured-headline">${escapeHtml(item.title)}</h3>
-                <p class="featured-lead">${escapeHtml(item.lead)}</p>
-                <div class="featured-footer">
-                    <span class="platform-source-label">${escapeHtml(item.platformLabel)}</span>
-                    <span class="action-trigger-text">${resolvedActionLabel}</span>
-                </div>
-            </div>
+            </a>
         `;
-
-        featuredGrid.appendChild(card);
-    });
+    }).join("");
 }
 
-/* ==========================================================================
-   2. Kategória Számlálók
-   ========================================================================== */
-function updateFilterCounts() {
-    const counts = { all: mediaItems.length, hvg: 0, youtube: 0, podcast: 0 };
-
-    mediaItems.forEach(item => {
-        if (counts[item.platform] !== undefined) counts[item.platform]++;
-    });
-
-    Object.entries(counts).forEach(([key, value]) => {
-        const el = document.getElementById(`count-${key}`);
-        if (el) el.textContent = value;
-    });
-}
-
-/* ==========================================================================
-   3. Fő Tartalomjegyzék Renderelő (Teljes szélességű szerkesztőségi lista)
-   ========================================================================== */
 function renderContent() {
     const container = document.getElementById("mediaContainer");
     if (!container) return;
 
-    container.innerHTML = "";
     const query = normalizeText(currentSearch.trim());
-
     const filtered = mediaItems.filter(item => {
-        const matchesFilter = currentFilter === "all" || item.platform === currentFilter;
-        const matchesSubFilter = currentFilter === "all" || currentSubFilter === "all" || item.subCategory === currentSubFilter;
-        const matchesSearch = !query ||
-            normalizeText(item.title).includes(query) ||
-            normalizeText(item.lead).includes(query) ||
-            normalizeText(item.column).includes(query) ||
-            (item.tags && item.tags.some(t => normalizeText(t).includes(query)));
+        if (currentFilter !== "all" && item.platform !== currentFilter) return false;
+        if (currentFilter !== "all" && currentSubFilter !== "all" && item.subCategory !== currentSubFilter) return false;
+        if (!query) return true;
 
-        return matchesFilter && matchesSubFilter && matchesSearch;
+        const haystack = [item.title, item.lead, item.column, ...(item.tags || [])].join("\n");
+        return normalizeText(haystack).includes(query);
     });
 
-    if (filtered.length === 0) {
-        container.innerHTML = `
+    container.innerHTML = filtered.length
+        ? filtered.map(renderCard).join("")
+        : `
             <div class="empty-state">
                 <p class="empty-state-title">Nincs találat a megadott feltételekkel</p>
                 <p class="empty-state-desc">Próbálj másik keresőszót vagy állítsd vissza az 'Összes' fülre.</p>
             </div>
         `;
-        return;
-    }
-
-    filtered.forEach(item => container.appendChild(createHorizontalCard(item)));
-}
-
-function createLinkCard(item, className) {
-    const card = document.createElement("a");
-    card.href = item.url;
-    card.target = "_blank";
-    card.rel = "noopener noreferrer";
-    card.className = className;
-    card.title = `${item.title} — Megnyitás új lapon`;
-    return card;
 }
 
 function getPlatformBadge(item) {
     if (item.isSpotlight) {
         return `<span class="platform-pill spotlight">★ ${escapeHtml(item.platformLabel || item.column)}</span>`;
     }
-    if (item.platform === "hvg") {
-        if (item.subCategory === "pulzus") {
-            return `<span class="platform-pill hvg-pulzus">HVG ${escapeHtml(item.column)}</span>`;
-        }
-        return `<span class="platform-pill hvg">HVG • ${escapeHtml(item.column)}</span>`;
-    }
-    if (item.platform === "youtube") {
-        return `<span class="platform-pill youtube">YouTube • ${escapeHtml(item.column)}</span>`;
-    }
     if (item.platform === "podcast") {
-        if (item.subCategory === "guest") {
-            return `<span class="platform-pill podcast-guest">★ Vendégszereplés</span>`;
-        }
-        if (item.subCategory === "editor") {
-            return `<span class="platform-pill podcast-editor">Kommcast • Vágó</span>`;
-        }
-        if (item.subCategory === "reporter") {
-            return `<span class="platform-pill podcast">🎙️ Kommcast • Riporter</span>`;
-        }
-        return `<span class="platform-pill podcast">🎙️ Podcast • ${escapeHtml(item.column)}</span>`;
+        const [cls, label] = PODCAST_BADGES[item.subCategory] || ["podcast", `🎙️ Podcast • ${escapeHtml(item.column)}`];
+        return `<span class="platform-pill ${cls}">${label}</span>`;
     }
-    return `<span class="platform-pill hvg">${escapeHtml(item.column)}</span>`;
+
+    const isPulzus = item.platform === "hvg" && item.subCategory === "pulzus";
+    const cls = isPulzus ? "hvg-pulzus" : item.platform;
+    const prefix = item.platform === "youtube" ? "YouTube • " : isPulzus ? "HVG " : "HVG • ";
+    return `<span class="platform-pill ${cls}">${prefix}${escapeHtml(item.column)}</span>`;
 }
 
 function getActionLabel(item) {
     if (item.actionLabel) return escapeHtml(item.actionLabel);
     if (item.platform === "youtube") return "Videó megtekintése a YouTube-on ↗";
-    if (item.platform === "podcast") {
-        if (item.subCategory === "editor") return "Teljes adás a YouTube-on (vágó) ↗";
-        if (item.subCategory === "guest") return "Adás meghallgatása a Spotify-on 🎧 ↗";
-        return "Adás meghallgatása (riporter) 🎙️ ↗";
-    }
-    if (item.platform === "hvg" && item.subCategory === "pulzus") {
-        return "Cikk elolvasása a HVG Pulzuson ↗";
-    }
-    return "Cikk elolvasása a hvg.hu-n ↗";
+    if (item.platform === "podcast") return PODCAST_ACTIONS[item.subCategory] || PODCAST_ACTIONS.reporter;
+    return item.subCategory === "pulzus"
+        ? "Cikk elolvasása a HVG Pulzuson ↗"
+        : "Cikk elolvasása a hvg.hu-n ↗";
 }
 
-function createHorizontalCard(item) {
-    const className = "horizontal-card" + (item.isSpotlight ? " spotlight-card" : "");
-    const card = createLinkCard(item, className);
-
-    card.innerHTML = `
-        <div class="h-thumb-box">
-            <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
-        </div>
-        <div class="h-content">
-            <div class="h-meta-row">
-                ${getPlatformBadge(item)}
-                <span class="h-date">${escapeHtml(item.date)} • ${escapeHtml(item.readTime)}</span>
+function renderCard(item) {
+    const spotlightClass = item.isSpotlight ? " spotlight-card" : "";
+    return `
+        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="horizontal-card${spotlightClass}" title="${escapeHtml(item.title)} — Megnyitás új lapon">
+            <div class="h-thumb-box">
+                <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" loading="lazy">
             </div>
-            <h2 class="h-headline">${escapeHtml(item.title)}</h2>
-            <p class="h-lead">${escapeHtml(item.lead)}</p>
-            <div class="h-footer">
-                <span class="platform-source-label">${escapeHtml(item.platformLabel)}</span>
-                <span class="action-trigger-text">${getActionLabel(item)}</span>
+            <div class="h-content">
+                <div class="h-meta-row">
+                    ${getPlatformBadge(item)}
+                    <span class="h-date">${escapeHtml(formatDate(item.date))} • ${escapeHtml(item.readTime)}</span>
+                </div>
+                <h2 class="h-headline">${escapeHtml(item.title)}</h2>
+                <p class="h-lead">${escapeHtml(item.lead)}</p>
+                <div class="h-footer">
+                    <span class="platform-source-label">${escapeHtml(item.platformLabel)}</span>
+                    <span class="action-trigger-text">${getActionLabel(item)}</span>
+                </div>
             </div>
-        </div>
+        </a>
     `;
-
-    return card;
 }
 
-/* ==========================================================================
-   4. Szűrés, Alszűrők, Keresés & E-mail Védelem
-   ========================================================================== */
 function renderSubfilterBar() {
     const bar = document.getElementById("subfilterBar");
     if (!bar) return;
 
     const config = SUBFILTER_CONFIG[currentFilter];
     if (!config) {
-        bar.style.display = "none";
         bar.innerHTML = "";
         bar.removeAttribute("data-platform");
         return;
@@ -279,9 +217,9 @@ function renderSubfilterBar() {
             : platformItems.filter(item => item.subCategory === key).length;
         const activeClass = key === currentSubFilter ? " active" : "";
         return `
-            <button class="subfilter-tab${activeClass}" data-subfilter="${key}">
+            <button type="button" class="subfilter-tab${activeClass}" data-subfilter="${key}">
                 <span>${text}</span>
-                <span class="sub-count">${count}</span>
+                <span class="tab-count">${count}</span>
             </button>
         `;
     }).join("");
@@ -291,33 +229,43 @@ function renderSubfilterBar() {
         <span class="subfilter-label">${config.label}</span>
         <div class="subfilter-buttons">${buttonsHtml}</div>
     `;
-    bar.style.display = "flex";
+}
 
-    const subTabs = bar.querySelectorAll(".subfilter-tab[data-subfilter]");
-    subTabs.forEach(subTab => {
-        subTab.addEventListener("click", () => {
-            subTabs.forEach(t => t.classList.remove("active"));
+function initFilters() {
+    const filterGroup = document.querySelector(".filter-group");
+    if (filterGroup) {
+        filterGroup.querySelectorAll(".filter-tab[data-filter]").forEach(tab => {
+            const filter = tab.getAttribute("data-filter");
+            const count = filter === "all"
+                ? mediaItems.length
+                : mediaItems.filter(item => item.platform === filter).length;
+            const countEl = tab.querySelector(".tab-count");
+            if (countEl) countEl.textContent = count;
+        });
+
+        filterGroup.addEventListener("click", e => {
+            const tab = e.target.closest(".filter-tab[data-filter]");
+            if (!tab) return;
+            filterGroup.querySelectorAll(".filter-tab").forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+            currentFilter = tab.getAttribute("data-filter");
+            currentSubFilter = "all";
+            renderSubfilterBar();
+            renderContent();
+        });
+    }
+
+    const subfilterBar = document.getElementById("subfilterBar");
+    if (subfilterBar) {
+        subfilterBar.addEventListener("click", e => {
+            const subTab = e.target.closest(".subfilter-tab[data-subfilter]");
+            if (!subTab) return;
+            subfilterBar.querySelectorAll(".subfilter-tab").forEach(t => t.classList.remove("active"));
             subTab.classList.add("active");
             currentSubFilter = subTab.getAttribute("data-subfilter");
             renderContent();
         });
-    });
-}
-
-function initFilters() {
-    const tabs = document.querySelectorAll(".filter-tab[data-filter]");
-
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
-            currentFilter = tab.getAttribute("data-filter");
-            currentSubFilter = "all";
-
-            renderSubfilterBar();
-            renderContent();
-        });
-    });
+    }
 }
 
 function initSearch() {
@@ -331,8 +279,7 @@ function initSearch() {
 }
 
 function initEmailCopy() {
-    const protectedContacts = document.querySelectorAll(".protected-contact");
-    protectedContacts.forEach(contact => {
+    document.querySelectorAll(".protected-contact").forEach(contact => {
         contact.addEventListener("click", e => {
             e.preventDefault();
             const u = contact.getAttribute("data-u");
@@ -340,21 +287,21 @@ function initEmailCopy() {
             if (!u || !d) return;
 
             const email = `${u}@${d}`;
-            if (!navigator.clipboard || !navigator.clipboard.writeText) {
+            if (!navigator.clipboard?.writeText) {
                 window.location.href = `mailto:${email}`;
                 return;
             }
 
             navigator.clipboard.writeText(email).then(() => {
-                const textSpan = contact.querySelector(".protected-email-text") || contact;
-                const originalText = textSpan.innerText;
-                textSpan.innerText = "Cím másolva!";
+                const textSpan = contact.querySelector("span") || contact;
+                const originalText = textSpan.textContent;
+                textSpan.textContent = "Cím másolva!";
                 contact.style.pointerEvents = "none";
                 contact.style.color = "#4ade80";
 
                 setTimeout(() => {
-                    textSpan.innerText = originalText;
-                    contact.style.pointerEvents = "auto";
+                    textSpan.textContent = originalText;
+                    contact.style.pointerEvents = "";
                     contact.style.color = "";
                 }, 2000);
             }).catch(() => {
@@ -362,6 +309,11 @@ function initEmailCopy() {
             });
         });
     });
+}
+
+function formatDate(iso) {
+    const [y, m, d] = (iso || "").split("-");
+    return m && MONTHS[+m - 1] ? `${y}. ${MONTHS[+m - 1]} ${d}.` : (iso || "");
 }
 
 function normalizeText(text) {

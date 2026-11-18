@@ -58,7 +58,7 @@
     <!-- Betűtípusok (Google Fonts) és Stíluslap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -99,7 +99,7 @@
                 <span class="social-row-label">Elérhetőségek:</span>
                 <a href="#" class="social-pill email protected-contact" data-u="baloghmartin" data-d="icloud.com" title="E-mail cím másolása">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span class="protected-email-text">E-mail</span>
+                    <span>E-mail</span>
                 </a>
                 <a href="https://x.com/NotMartinBalogh" target="_blank" rel="noopener noreferrer" class="social-pill x-twitter" title="X (Twitter) - @NotMartinBalogh">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -128,7 +128,7 @@
     <!-- ==========================================================================
          Kiemelt Szekció: Mindhárom Platform Legfrissebb Munkája (Időrendi Top 3)
          ========================================================================== -->
-    <section class="featured-section" id="featuredSection">
+    <section class="featured-section">
         <div class="featured-header">
             <div class="featured-eyebrow">
                 <span class="pulse-dot"></span>
@@ -148,36 +148,32 @@
         
         <!-- Platform Szűrők: Összes, HVG Cikkek, YouTube, Podcast -->
         <div class="filter-group" role="group" aria-label="Kategória szűrők">
-            <button class="filter-tab active" data-filter="all">
+            <button type="button" class="filter-tab active" data-filter="all">
                 <span>Összes</span>
-                <span class="tab-count" id="count-all">0</span>
+                <span class="tab-count">0</span>
             </button>
-            <button class="filter-tab" data-filter="hvg">
+            <button type="button" class="filter-tab" data-filter="hvg">
                 <span>📰 HVG Cikkek</span>
-                <span class="tab-count" id="count-hvg">0</span>
+                <span class="tab-count">0</span>
             </button>
-            <button class="filter-tab" data-filter="youtube">
+            <button type="button" class="filter-tab" data-filter="youtube">
                 <span>🎬 YouTube Videók</span>
-                <span class="tab-count" id="count-youtube">0</span>
+                <span class="tab-count">0</span>
             </button>
-            <button class="filter-tab" data-filter="podcast">
+            <button type="button" class="filter-tab" data-filter="podcast">
                 <span>🎙️ Podcastok</span>
-                <span class="tab-count" id="count-podcast">0</span>
+                <span class="tab-count">0</span>
             </button>
         </div>
 
-        <div class="toolbar-right">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Keresés cím vagy téma szerint..." aria-label="Keresés cím vagy téma szerint">
-            </div>
-        </div>
+        <input type="search" id="searchInput" class="search-input" placeholder="Keresés cím vagy téma szerint..." aria-label="Keresés cím vagy téma szerint">
 
     </section>
 
     <!-- ==========================================================================
          Kategória Alszűrő Sáv (HVG rovatok / YouTube típusok / Podcast szerepkörök)
          ========================================================================== -->
-    <div class="subfilter-container" id="subfilterBar" style="display: none;"></div>
+    <div class="subfilter-container" id="subfilterBar"></div>
 
     <!-- ==========================================================================
          Fő Tartalomjegyzék Konténer (Dinamikusan renderelve)
@@ -199,7 +195,7 @@
             <div class="footer-social-links">
                 <a href="#" class="social-pill email protected-contact" data-u="baloghmartin" data-d="icloud.com" title="E-mail cím másolása">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span class="protected-email-text">E-mail</span>
+                    <span>E-mail</span>
                 </a>
                 <a href="https://x.com/NotMartinBalogh" target="_blank" rel="noopener noreferrer" class="social-pill x-twitter" title="X (Twitter) - @NotMartinBalogh">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
