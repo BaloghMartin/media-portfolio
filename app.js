@@ -342,6 +342,7 @@ function initSectionNav() {
 
     let ticking = false;
     let lastActiveId = null;
+    const getScrollBehavior = () => (window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth");
 
     const update = () => {
         ticking = false;
@@ -381,8 +382,7 @@ function initSectionNav() {
                 const targetLeft = activeLink
                     ? Math.max(0, activeLink.offsetLeft - (linksWrap.clientWidth - activeLink.offsetWidth) / 2)
                     : 0;
-                const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-                linksWrap.scrollTo({ left: targetLeft, behavior });
+                linksWrap.scrollTo({ left: targetLeft, behavior: getScrollBehavior() });
             }
         }
     };
@@ -393,6 +393,29 @@ function initSectionNav() {
             requestAnimationFrame(update);
         }
     };
+
+    nav.addEventListener("click", e => {
+        const link = e.target.closest("a[href^='#']");
+        if (!link) return;
+
+        const hash = link.getAttribute("href");
+        const behavior = getScrollBehavior();
+        if (hash === "#top") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior });
+        } else {
+            const target = document.querySelector(hash);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior, block: "start" });
+        }
+
+        if (window.location.hash) {
+            try {
+                history.replaceState(null, "", window.location.pathname + window.location.search);
+            } catch {}
+        }
+    });
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
