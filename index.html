@@ -12,9 +12,10 @@
     <link rel="alternate" type="text/markdown" href="https://baloghmartin.com/llms.txt" title="LLMs.txt — Balogh Martin">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico?v=2" sizes="32x32">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
     <!-- Open Graph / Twitter Card -->
     <meta property="og:type" content="profile">
@@ -27,6 +28,7 @@
     <meta property="og:title" content="Balogh Martin — Újságíró | HVG, YouTube, Podcast">
     <meta property="og:description" content="Balogh Martin független újságíró, HVG külsős szerző és tartalomgyártó portfóliója: AI, tech, kiberbiztonság, gazdaság, YouTube, Kommcast és FPL.">
     <meta property="og:image" content="https://baloghmartin.com/assets/author.jpg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="768">
     <meta property="og:image:height" content="1024">
     <meta property="og:image:alt" content="Balogh Martin független újságíró és médiaalkotó portréja">
@@ -65,12 +67,28 @@
                 "isPartOf": {
                     "@id": "https://baloghmartin.com/#website"
                 },
+                "primaryImageOfPage": {
+                    "@id": "https://baloghmartin.com/#primaryimage"
+                },
+                "image": {
+                    "@id": "https://baloghmartin.com/#primaryimage"
+                },
+                "thumbnailUrl": "https://baloghmartin.com/assets/author.jpg",
                 "mainEntity": {
                     "@id": "https://baloghmartin.com/#person"
                 },
                 "hasPart": {
                     "@id": "https://baloghmartin.com/#notable-works"
                 }
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://baloghmartin.com/#primaryimage",
+                "url": "https://baloghmartin.com/assets/author.jpg",
+                "contentUrl": "https://baloghmartin.com/assets/author.jpg",
+                "width": 768,
+                "height": 1024,
+                "caption": "Balogh Martin független újságíró és médiaalkotó portréja"
             },
             {
                 "@type": "Person",
@@ -82,10 +100,7 @@
                 ],
                 "url": "https://baloghmartin.com/",
                 "image": {
-                    "@type": "ImageObject",
-                    "url": "https://baloghmartin.com/assets/author.jpg",
-                    "width": 768,
-                    "height": 1024
+                    "@id": "https://baloghmartin.com/#primaryimage"
                 },
                 "jobTitle": "Független újságíró és médiaalkotó",
                 "description": "Balogh Martin független újságíró és tartalomgyártó. A 2025 őszi HVG-gyakornokságát követően külsős szerzőként publikál a HVG nyomtatott hetilapjában és online felületein (hvg.hu, hvg360, HVG Pulzus). 2026-ban szerzett Kommunikáció- és médiatudomány BA diplomát az SZTE-n, jelenleg az SZTE TTIK gazdaságinformatikus BSc végzős hallgatója (szoftverfejlesztés, adatbázis- és rendszertervezés, vállalati információs rendszerek). Saját YouTube-műsorokat készít, a Kommcast podcast állandó stábtagja és vágója, valamint aktív rádiós demonstrátorként segíti a hallgatókat a podcast- és rádiós eszközök használatában és stúdióbeállításában. A 2024/25-ös Fantasy Premier League (FPL) szezonban (2025-ben) a világranglista 12. helyezettje és a legjobb magyar menedzser lett.",
@@ -415,6 +430,7 @@
          ========================================================================== -->
     <nav class="section-nav" id="sectionNav" aria-label="Oldalon belüli navigáció">
         <div class="section-nav-bar">
+            <span class="section-nav-label" aria-hidden="true">Menü:</span>
             <div class="section-nav-links">
                 <a href="#kiemelt" class="section-nav-link">
                     <span class="nav-label-full">Kiemelt megjelenések</span>
@@ -677,7 +693,7 @@
     <footer class="site-footer">
         <div class="site-footer-top">
             <div class="footer-brand">
-                <img src="assets/favicon.svg?v=4" alt="" aria-hidden="true" class="brand-logo" width="28" height="28">
+                <img src="assets/favicon.svg" alt="" aria-hidden="true" class="brand-logo" width="28" height="28">
                 <span class="brand-name">Balogh Martin</span>
                 <span class="brand-tagline">• Független Média Portfólió</span>
             </div>

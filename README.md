@@ -32,7 +32,7 @@ index.html    – az oldal HTML struktúrája és SEO metaadatai
 style.css     – megjelenés és reszponzív elrendezés
 data.js       – MEDIA_DATABASE tömb (43 elem, kézzel ellenőrzött adatok)
 app.js        – kliensoldali logika (szűrés, keresés, renderelés)
-assets/       – borítóképek és ikonok (hvg/, youtube/, podcasts/, author.jpg, favicon.svg, apple-touch-icon.png)
+assets/       – borítóképek és ikonok (hvg/, youtube/, podcasts/, author.jpg, favicon-96x96.png, favicon.svg, apple-touch-icon.png)
 favicon.ico   – többméretű (16x16, 32x32, 48x48) böngésző ikon
 robots.txt    – keresőmotorok és AI-botok indexelési útmutatója
 sitemap.xml   – oldaltérkép a keresőmotorokhoz

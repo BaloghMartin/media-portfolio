@@ -348,7 +348,6 @@ body {
 .section-nav-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
     padding: 8px 10px;
     background: var(--bg-surface);
@@ -362,12 +361,31 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
+.section-nav-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    padding-left: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    user-select: none;
+}
+
 .section-nav-links {
     position: relative;
     display: flex;
     align-items: center;
     gap: 6px;
+    flex: 1;
     min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.section-nav-links::-webkit-scrollbar {
+    display: none;
 }
 
 .section-nav-link,
@@ -417,6 +435,12 @@ body {
 .section-nav-top:focus-visible {
     opacity: 1;
     pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .section-nav-top-text {
+        display: none;
+    }
 }
 
 .featured-section,
@@ -1029,12 +1053,13 @@ body {
         padding: 6px 8px;
         gap: 6px;
     }
-    .section-nav-links {
-        overflow-x: auto;
-        scrollbar-width: none;
+    .section-nav-label {
+        font-size: 10px;
+        letter-spacing: 0.6px;
+        padding-left: 4px;
     }
-    .section-nav-links::-webkit-scrollbar {
-        display: none;
+    .section-nav-links {
+        gap: 4px;
     }
     .section-nav-link {
         font-size: 12px;
@@ -1048,9 +1073,6 @@ body {
     }
     .section-nav-top {
         padding: 5px 9px;
-    }
-    .section-nav-top-text {
-        display: none;
     }
     .featured-section {
         padding: 18px 16px 20px 16px;
