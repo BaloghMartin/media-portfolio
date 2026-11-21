@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balogh Martin — Média Portfólió | Cikkek, Videók & Podcastok</title>
-    <meta name="description" content="Balogh Martin független újságíró és médiaalkotó hivatalos portfóliója: HVG, hvg360 és HVG Pulzus cikkek, YouTube-műsorok és podcast adások.">
+    <title>Balogh Martin — Újságíró | HVG, YouTube, Podcast</title>
+    <meta name="description" content="Balogh Martin független újságíró, HVG külsős szerző és tartalomgyártó portfóliója: AI, tech, kiberbiztonság, gazdaság, YouTube, Kommcast és FPL.">
     <meta name="author" content="Balogh Martin">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#0c0c0f">
     <link rel="canonical" href="https://baloghmartin.com/">
+    <link rel="alternate" type="text/markdown" href="https://baloghmartin.com/llms.txt" title="LLMs.txt — Balogh Martin">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
@@ -16,50 +17,333 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
 
     <!-- Open Graph / Twitter Card -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Martin">
+    <meta property="profile:last_name" content="Balogh">
+    <meta property="profile:username" content="NotMartinBalogh">
     <meta property="og:locale" content="hu_HU">
     <meta property="og:site_name" content="Balogh Martin">
     <meta property="og:url" content="https://baloghmartin.com/">
-    <meta property="og:title" content="Balogh Martin — Média Portfólió | Cikkek, Videók & Podcastok">
-    <meta property="og:description" content="Balogh Martin független újságíró és médiaalkotó hivatalos portfóliója: HVG, hvg360 és HVG Pulzus cikkek, YouTube-műsorok és podcast adások.">
+    <meta property="og:title" content="Balogh Martin — Újságíró | HVG, YouTube, Podcast">
+    <meta property="og:description" content="Balogh Martin független újságíró, HVG külsős szerző és tartalomgyártó portfóliója: AI, tech, kiberbiztonság, gazdaság, YouTube, Kommcast és FPL.">
     <meta property="og:image" content="https://baloghmartin.com/assets/author.jpg">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image:width" content="768">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="Balogh Martin független újságíró és médiaalkotó portréja">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@NotMartinBalogh">
     <meta name="twitter:creator" content="@NotMartinBalogh">
-    <meta name="twitter:title" content="Balogh Martin — Média Portfólió | Cikkek, Videók & Podcastok">
-    <meta name="twitter:description" content="Balogh Martin független újságíró és médiaalkotó hivatalos portfóliója: HVG, hvg360 és HVG Pulzus cikkek, YouTube-műsorok és podcast adások.">
+    <meta name="twitter:title" content="Balogh Martin — Újságíró | HVG, YouTube, Podcast">
+    <meta name="twitter:description" content="Balogh Martin független újságíró, HVG külsős szerző és tartalomgyártó portfóliója: AI, tech, kiberbiztonság, gazdaság, YouTube, Kommcast és FPL.">
     <meta name="twitter:image" content="https://baloghmartin.com/assets/author.jpg">
+    <meta name="twitter:image:alt" content="Balogh Martin független újságíró és médiaalkotó portréja">
 
-    <!-- Schema.org (ProfilePage + Person) -->
+    <!-- Schema.org (@graph: WebSite, ProfilePage, Person, ItemList, FAQPage) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ProfilePage",
-        "url": "https://baloghmartin.com/",
-        "name": "Balogh Martin — Média Portfólió",
-        "inLanguage": "hu",
-        "mainEntity": {
-            "@type": "Person",
-            "name": "Balogh Martin",
-            "url": "https://baloghmartin.com/",
-            "image": "https://baloghmartin.com/assets/author.jpg",
-            "jobTitle": "Független újságíró és médiaalkotó",
-            "sameAs": [
-                "https://hvg.hu/szerzok/balogh-martin",
-                "https://www.youtube.com/@NotMartinBalogh",
-                "https://x.com/NotMartinBalogh",
-                "https://www.linkedin.com/in/martin-balogh-068176300/",
-                "https://www.instagram.com/notmartinbalogh/",
-                "https://www.facebook.com/notmartinbalogh"
-            ]
-        }
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://baloghmartin.com/#website",
+                "url": "https://baloghmartin.com/",
+                "name": "Balogh Martin — Média Portfólió",
+                "alternateName": "Martin Balogh Media Portfolio",
+                "inLanguage": "hu",
+                "publisher": {
+                    "@id": "https://baloghmartin.com/#person"
+                }
+            },
+            {
+                "@type": "ProfilePage",
+                "@id": "https://baloghmartin.com/#profilepage",
+                "url": "https://baloghmartin.com/",
+                "name": "Balogh Martin — Újságíró & Média Portfólió",
+                "description": "Balogh Martin független újságíró, HVG külsős szerző és tartalomgyártó portfóliója: AI, tech, kiberbiztonság, gazdaság, YouTube, Kommcast és FPL.",
+                "inLanguage": "hu",
+                "dateModified": "2026-11-21",
+                "isPartOf": {
+                    "@id": "https://baloghmartin.com/#website"
+                },
+                "mainEntity": {
+                    "@id": "https://baloghmartin.com/#person"
+                },
+                "hasPart": {
+                    "@id": "https://baloghmartin.com/#notable-works"
+                }
+            },
+            {
+                "@type": "Person",
+                "@id": "https://baloghmartin.com/#person",
+                "name": "Balogh Martin",
+                "alternateName": [
+                    "Martin Balogh",
+                    "@NotMartinBalogh"
+                ],
+                "url": "https://baloghmartin.com/",
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://baloghmartin.com/assets/author.jpg",
+                    "width": 768,
+                    "height": 1024
+                },
+                "jobTitle": "Független újságíró és médiaalkotó",
+                "description": "Balogh Martin független újságíró és tartalomgyártó. A 2025 őszi HVG-gyakornokságát követően külsős szerzőként publikál a HVG nyomtatott hetilapjában és online felületein (hvg.hu, hvg360, HVG Pulzus). 2026-ban szerzett Kommunikáció- és médiatudomány BA diplomát az SZTE-n, jelenleg az SZTE TTIK gazdaságinformatikus BSc végzős hallgatója (szoftverfejlesztés, adatbázis- és rendszertervezés, vállalati információs rendszerek). Saját YouTube-műsorokat készít, a Kommcast podcast állandó stábtagja és vágója, valamint aktív rádiós demonstrátorként segíti a hallgatókat a podcast- és rádiós eszközök használatában és stúdióbeállításában. A 2024/25-ös Fantasy Premier League (FPL) szezonban (2025-ben) a világranglista 12. helyezettje és a legjobb magyar menedzser lett.",
+                "nationality": {
+                    "@type": "Country",
+                    "name": "Hungary"
+                },
+                "knowsLanguage": [
+                    "hu",
+                    "en"
+                ],
+                "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Szegedi Tudományegyetem, Bölcsészet- és Társadalomtudományi Kar (SZTE BTK)",
+                    "url": "https://arts.u-szeged.hu/"
+                },
+                "hasCredential": {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Kommunikáció- és médiatudomány BA",
+                    "credentialCategory": "degree",
+                    "dateCreated": "2026",
+                    "recognizedBy": {
+                        "@type": "CollegeOrUniversity",
+                        "name": "Szegedi Tudományegyetem",
+                        "url": "https://u-szeged.hu/"
+                    }
+                },
+                "affiliation": [
+                    {
+                        "@type": "NewsMediaOrganization",
+                        "name": "HVG",
+                        "url": "https://hvg.hu/"
+                    },
+                    {
+                        "@type": "Organization",
+                        "name": "Kommcast Podcast",
+                        "url": "https://podcasts.apple.com/us/podcast/kommcast/id1539053555"
+                    },
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "Szegedi Tudományegyetem Természettudományi és Informatikai Kar (SZTE TTIK)",
+                        "url": "https://sci.u-szeged.hu/"
+                    }
+                ],
+                "award": "Fantasy Premier League (FPL) 2024/25-ös szezon (2025) – Világranglista 12. helyezett (11+ millió játékosból), legjobb magyar menedzser",
+                "knowsAbout": [
+                    "Mesterséges intelligencia",
+                    "Kiberbiztonság",
+                    "Technológiai újságírás",
+                    "Gazdaságinformatika",
+                    "Szoftverfejlesztés és vállalati információs rendszerek",
+                    "Digitális tulajdonjog",
+                    "Média- és podcastgyártás",
+                    "Rádió- és podcast-eszközhasználat",
+                    "Fantasy Premier League",
+                    "Futball adatelemzés",
+                    "AI journalism",
+                    "Cybersecurity",
+                    "Sports analytics"
+                ],
+                "sameAs": [
+                    "https://hvg.hu/szerzok/balogh-martin",
+                    "https://www.youtube.com/@NotMartinBalogh",
+                    "https://x.com/NotMartinBalogh",
+                    "https://www.linkedin.com/in/martin-balogh-068176300/",
+                    "https://www.instagram.com/notmartinbalogh/",
+                    "https://www.facebook.com/notmartinbalogh"
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "@id": "https://baloghmartin.com/#notable-works",
+                "name": "Válogatott publikációk és médiamegjelenések",
+                "itemListOrder": "https://schema.org/ItemListOrderDescending",
+                "numberOfItems": 8,
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "Article",
+                            "headline": "Már a szülés előtt elkezdhető a szülés utáni depresszió megelőzése",
+                            "url": "https://pulzus.hvg.hu/egeszseg/20261109_szules-utani-depresszio-megelozese-rose-program",
+                            "datePublished": "2026-11-09",
+                            "inLanguage": "hu",
+                            "publisher": {
+                                "@type": "NewsMediaOrganization",
+                                "name": "HVG Pulzus"
+                            },
+                            "author": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "Article",
+                            "headline": "Rendben van az ingyen Photoshop és Word? Egyre több program esik le az AI-kamionról",
+                            "url": "https://hvg.hu/360/20261108_hvg-ai-klonozott-szoftverek-szabadalom-szerzoi-jog-artcraft",
+                            "datePublished": "2026-11-08",
+                            "inLanguage": "hu",
+                            "publisher": {
+                                "@type": "NewsMediaOrganization",
+                                "name": "hvg360"
+                            },
+                            "author": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "Article",
+                            "headline": "Mi ez a felfordulás most a matematikában? Már miért döntené romba az AI?",
+                            "url": "https://hvg.hu/360/20260927_hvg-mesterseges-intelligencia-matematika-openai-vita",
+                            "datePublished": "2026-09-27",
+                            "inLanguage": "hu",
+                            "publisher": {
+                                "@type": "NewsMediaOrganization",
+                                "name": "hvg360"
+                            },
+                            "author": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "item": {
+                            "@type": "Article",
+                            "headline": "Nem az a csoda, hogy feltörték az Államkincstár rendszerét, inkább az, hogy csak most",
+                            "url": "https://hvg.hu/360/20260817_magyar-allamkincstar-elleni-kibertamadas-elemzes-hvg-ebx",
+                            "datePublished": "2026-08-17",
+                            "inLanguage": "hu",
+                            "publisher": {
+                                "@type": "NewsMediaOrganization",
+                                "name": "hvg360"
+                            },
+                            "author": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 5,
+                        "item": {
+                            "@type": "VideoObject",
+                            "name": "MI, a számítógép – Műsor a mesterséges intelligenciáról",
+                            "description": "Csupán egy számítógép a mesterséges intelligencia, vagy valami annál sokkal több? Közel egyórás kerekasztal-műsor és mélyfúrás a technológiai, jogi és társadalmi határokról Dr. Rab Árpád társadalomkutatóval, Dr. Mezei Péter jogásszal, Dr. Berend Gábor informatikussal, Kiss Donáttal és magával a ChatGPT-vel. Egyben az SZTE Kommunikáció- és médiatudomány BA szakán készített szakdolgozat mestermunkája.",
+                            "url": "https://www.youtube.com/watch?v=8Z3wvY1Ghh0",
+                            "thumbnailUrl": "https://baloghmartin.com/assets/youtube/yt-01.jpg",
+                            "uploadDate": "2026-08-10T12:00:00+02:00",
+                            "inLanguage": "hu",
+                            "creator": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 6,
+                        "item": {
+                            "@type": "VideoObject",
+                            "name": "24.hu Ziccer: Szoboszlait is elrontja Slot? – Balogh Martin a fantasy futballról és a gamifikációról",
+                            "description": "Meghívott szakértő vendégként szerepeltem az ország egyik vezető független hírportálja, a 24.hu hivatalos futballműsorában, a Ziccerben. A 18:44-es blokkban (1124 mp) részletesen beszélgetünk a Fantasy Premier League robbanásáról, a digitális sportfogyasztásról, a gamifikáció mechanizmusairól és a modern szurkolói stratégiákról.",
+                            "url": "https://www.youtube.com/watch?v=pG5gYTitEPw&t=1124s",
+                            "thumbnailUrl": "https://baloghmartin.com/assets/youtube/yt-24hu-ziccer.jpg",
+                            "uploadDate": "2025-10-20T12:00:00+02:00",
+                            "inLanguage": "hu",
+                            "contributor": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 7,
+                        "item": {
+                            "@type": "PodcastEpisode",
+                            "name": "Gameweek 8 előzetes kibeszélő: Wildcard 2024/25 legjobb magyar menedzserével (vendég: Balogh Martin) – 206. adás",
+                            "url": "https://open.spotify.com/episode/0tIb8QsrhWbxVlddB5pZ1p",
+                            "datePublished": "2025-10-16",
+                            "inLanguage": "hu",
+                            "contributor": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 8,
+                        "item": {
+                            "@type": "VideoObject",
+                            "name": "20x TOP 100 FPL GW1 Teams – Balogh Martin a világ 12. helyezettjeként (FPL Harry)",
+                            "description": "A világ egyik legnagyobb elérésű Fantasy Premier League elemzője, FPL Harry videójában szerepeltem mint az előző szezon világ 12. legjobb menedzsere (több mint 11 millió játékosból). A videó 13:19-es blokkjában („World No.12 BB Team!”) Harry részletesen kielemzi a rendhagyó Gameweek 1-es Bench Boost draftomat, az egyensúlyi keretépítést és a korai chip-stratégiámat.",
+                            "url": "https://www.youtube.com/watch?v=sxOs0SkHmEo&t=799s",
+                            "thumbnailUrl": "https://baloghmartin.com/assets/youtube/yt-fpl-top12.jpg",
+                            "uploadDate": "2025-08-10T12:00:00+02:00",
+                            "inLanguage": "en",
+                            "contributor": {
+                                "@id": "https://baloghmartin.com/#person"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://baloghmartin.com/#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Ki az a Balogh Martin?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Balogh Martin magyar független újságíró és médiaalkotó. A 2025 őszi HVG-gyakornokságát követően külsős szerzőként publikál a HVG nyomtatott hetilapjában és online felületein (hvg.hu, hvg360, HVG Pulzus). 2026-ban szerzett Kommunikáció- és médiatudomány BA diplomát az SZTE-n, jelenleg az SZTE TTIK gazdaságinformatikus BSc végzős hallgatója. Emellett saját YouTube-műsorokat készít, a Kommcast podcast állandó stábtagja és vágója, valamint aktív rádiós demonstrátorként a stúdióeszközök beállításában és a podcast-eszközhasználat elsajátításában segíti a hallgatókat."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Milyen témákban publikál és készít tartalmakat?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Fő területei a mesterséges intelligencia, a kiberbiztonság, a technológia és a digitális tulajdonjog, emellett gazdasági, társadalmi, oktatási és egészségügyi témájú cikkeket is ír. Audiovizuális munkái közé tartoznak tech és közpolitikai YouTube-interjúk, hardvertesztek, a Kommcast podcast riporteri és hangvágói feladatai, valamint aktív rádiós demonstrátorként a hallgatók segítése a stúdiós és podcast-eszközök beállításában és használatában."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Milyen eredményt ért el a Fantasy Premier League-ben?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A 2024/25-ös Fantasy Premier League (FPL) szezonban (2025-ben) több mint 11 millió játékos közül a világranglista 12. helyén végzett, ezzel a szezon legjobb magyar menedzsere lett. Eredménye kapcsán szakértő vendégként szerepelt a 24.hu Ziccer műsorában, a Fantasy Besztlíg 206. adásában és az FPL Harry nemzetközi elemzővideójában."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Hol érhetők el a hivatalos profiljai és hogyan lehet kapcsolatba lépni vele?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Munkái és hivatalos csatornái ezen a portfólióoldalon (baloghmartin.com), a HVG szerzői archívumában, a YouTube-on (@NotMartinBalogh) és a Kommcast podcastban érhetők el. Közvetlen megkereséshez az oldalon található E-mail gomb, valamint hivatalos LinkedIn- és X-profilja (@NotMartinBalogh) használható."
+                        }
+                    }
+                ]
+            }
+        ]
     }
     </script>
 
     <!-- Betűtípusok (Google Fonts) és Stíluslap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -69,7 +353,7 @@
     <!-- ==========================================================================
          Személyes Szerzői Fejléc (Watermark & Portré Banner)
          ========================================================================== -->
-    <section class="author-banner">
+    <header class="author-banner">
         <div class="author-watermark" aria-hidden="true"></div>
 
         <div class="author-banner-content">
@@ -78,19 +362,19 @@
                 Független újságíró és tartalomgyártó vagyok. Külsős szerzőként rendszeresen publikálok a <strong>HVG</strong> nyomtatott hetilapjában és online felületein (hvg.hu, hvg360, HVG Pulzus), a <strong>YouTube</strong>-on saját műsorokat készítek, emellett a <strong>Kommcast</strong> podcast állandó stábtagja vagyok. A 2024/25-ös Premier League fantasy (FPL) szezonban elért eredményemnek (világranglista 12. hely, legjobb magyar menedzser) köszönhetően futballszakértőként szerepeltem a <strong>24.hu Ziccer</strong> műsorában, a <strong>Fantasy Besztlíg</strong> podcastban és egy nemzetközi videóban is.
             </p>
             <div class="author-links-bar">
-                <a href="https://www.youtube.com/watch?v=pG5gYTitEPw&t=1124s" target="_blank" rel="noopener noreferrer" class="author-link highlight-red">
+                <a href="https://www.youtube.com/watch?v=pG5gYTitEPw&amp;t=1124s" target="_blank" rel="noopener noreferrer" class="author-link highlight-red">
                     ★ 24.hu Ziccer vendégszereplés <span class="arr">↗</span>
                 </a>
                 <a href="https://open.spotify.com/episode/0tIb8QsrhWbxVlddB5pZ1p" target="_blank" rel="noopener noreferrer" class="author-link highlight-green">
                     ★ Fantasy Besztlíg vendég <span class="arr">↗</span>
                 </a>
-                <a href="https://www.youtube.com/@NotMartinBalogh" target="_blank" rel="noopener noreferrer" class="author-link">
+                <a href="https://www.youtube.com/@NotMartinBalogh" target="_blank" rel="noopener noreferrer me" class="author-link">
                     YouTube (@NotMartinBalogh) <span class="arr">↗</span>
                 </a>
                 <a href="https://podcasts.apple.com/us/podcast/kommcast/id1539053555" target="_blank" rel="noopener noreferrer" class="author-link">
                     Kommcast podcast <span class="arr">↗</span>
                 </a>
-                <a href="https://hvg.hu/szerzok/balogh-martin" target="_blank" rel="noopener noreferrer" class="author-link">
+                <a href="https://hvg.hu/szerzok/balogh-martin" target="_blank" rel="noopener noreferrer me" class="author-link">
                     HVG szerzői archívum <span class="arr">↗</span>
                 </a>
             </div>
@@ -98,23 +382,23 @@
             <!-- Közösségi Média & Elérhetőségek Sáv -->
             <div class="author-social-row">
                 <span class="social-row-label">Elérhetőségek:</span>
-                <a href="#" class="social-pill email protected-contact" data-u="baloghmartin" data-d="icloud.com" title="E-mail cím másolása">
+                <button type="button" class="social-pill email protected-contact" data-u="baloghmartin" data-d="icloud.com" title="E-mail cím másolása">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     <span>E-mail</span>
-                </a>
-                <a href="https://x.com/NotMartinBalogh" target="_blank" rel="noopener noreferrer" class="social-pill x-twitter" title="X (Twitter) - @NotMartinBalogh">
+                </button>
+                <a href="https://x.com/NotMartinBalogh" target="_blank" rel="noopener noreferrer me" class="social-pill x-twitter" title="X (Twitter) - @NotMartinBalogh">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     @NotMartinBalogh
                 </a>
-                <a href="https://www.linkedin.com/in/martin-balogh-068176300/" target="_blank" rel="noopener noreferrer" class="social-pill linkedin" title="LinkedIn profil">
+                <a href="https://www.linkedin.com/in/martin-balogh-068176300/" target="_blank" rel="noopener noreferrer me" class="social-pill linkedin" title="LinkedIn profil">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                     LinkedIn
                 </a>
-                <a href="https://www.instagram.com/notmartinbalogh/" target="_blank" rel="noopener noreferrer" class="social-pill instagram" title="Instagram profil">
+                <a href="https://www.instagram.com/notmartinbalogh/" target="_blank" rel="noopener noreferrer me" class="social-pill instagram" title="Instagram profil">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     Instagram
                 </a>
-                <a href="https://www.facebook.com/notmartinbalogh" target="_blank" rel="noopener noreferrer" class="social-pill facebook" title="Facebook profil">
+                <a href="https://www.facebook.com/notmartinbalogh" target="_blank" rel="noopener noreferrer me" class="social-pill facebook" title="Facebook profil">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     Facebook
                 </a>
@@ -122,65 +406,238 @@
         </div>
 
         <div class="author-avatar-box">
-            <img src="assets/author.jpg" alt="Balogh Martin" fetchpriority="high">
+            <img src="assets/author.jpg" alt="Balogh Martin független újságíró és médiaalkotó portréja" width="230" height="270" fetchpriority="high">
         </div>
-    </section>
+    </header>
 
-    <!-- ==========================================================================
-         Kiemelt Szekció: Mindhárom Platform Legfrissebb Munkája (Időrendi Top 3)
-         ========================================================================== -->
-    <section class="featured-section">
-        <div class="featured-header">
-            <div class="featured-eyebrow">
-                <span class="pulse-dot"></span>
-                <span>Kiemelt Megjelenések</span>
+    <main>
+
+        <!-- ==========================================================================
+             Kiemelt Szekció: Mindhárom Platform Legfrissebb Munkája (Időrendi Top 3)
+             ========================================================================== -->
+        <section class="featured-section" aria-labelledby="featuredHeading">
+            <div class="featured-header">
+                <h2 class="featured-eyebrow" id="featuredHeading">
+                    <span class="pulse-dot"></span>
+                    <span>Kiemelt Megjelenések</span>
+                </h2>
+                <div class="featured-caption">Mindhárom kategória legfrissebb munkája</div>
             </div>
-            <div class="featured-caption">Mindhárom kategória legfrissebb munkája</div>
-        </div>
-        <div class="featured-grid" id="featuredGrid">
-            <!-- JS automatikusan rendereli a legfrissebb HVG cikket, YouTube videót és Podcastot -->
-        </div>
-    </section>
+            <div class="featured-grid" id="featuredGrid">
+                <a href="https://pulzus.hvg.hu/egeszseg/20261109_szules-utani-depresszio-megelozese-rose-program" target="_blank" rel="noopener noreferrer" class="featured-card" title="Már a szülés előtt elkezdhető a szülés utáni depresszió megelőzése — Megnyitás új lapon">
+                    <div class="featured-thumb-wrap">
+                        <img src="assets/hvg/hvg-14.jpg" alt="Már a szülés előtt elkezdhető a szülés utáni depresszió megelőzése" decoding="async">
+                        <div class="featured-badge-top">
+                            <span class="platform-pill hvg-pulzus">★ Legfrissebb HVG Pulzus Cikk</span>
+                        </div>
+                        <div class="featured-metric-top">5 perc olvasás</div>
+                    </div>
+                    <div class="featured-body">
+                        <div class="featured-meta-line">
+                            <time datetime="2026-11-09">2026. november 09.</time>
+                            <span>Pulzus • Egészség</span>
+                        </div>
+                        <h3 class="featured-headline">Már a szülés előtt elkezdhető a szülés utáni depresszió megelőzése</h3>
+                        <p class="featured-lead">A szülészeti komplikációk miatt kórházba kerülő várandósok körében különösen magas a perinatális depresszió kockázata. Egy amerikai pilotkutatás most azt vizsgálta, beilleszthető-e az ellátásukba egy olyan pszichoedukációs program, amely már a szülés előtt segíti őket a lelki terhek, a párkapcsolati konfliktusok és a szülés utáni időszak kihívásainak kezelésében.</p>
+                        <div class="featured-footer">
+                            <span class="platform-source-label">HVG Pulzus</span>
+                            <span class="action-trigger-text">Cikk olvasása a HVG Pulzuson ↗</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=8Z3wvY1Ghh0" target="_blank" rel="noopener noreferrer" class="featured-card" title="MI, a számítógép – Műsor a mesterséges intelligenciáról — Megnyitás új lapon">
+                    <div class="featured-thumb-wrap">
+                        <img src="assets/youtube/yt-01.jpg" alt="MI, a számítógép – Műsor a mesterséges intelligenciáról" decoding="async">
+                        <div class="featured-badge-top">
+                            <span class="platform-pill youtube">★ Legfrissebb YouTube Műsor</span>
+                        </div>
+                        <div class="featured-metric-top">55:59 perc adás</div>
+                    </div>
+                    <div class="featured-body">
+                        <div class="featured-meta-line">
+                            <time datetime="2026-08-10">2026. augusztus 10.</time>
+                            <span>SZTE BA Mestermunka • Tech</span>
+                        </div>
+                        <h3 class="featured-headline">MI, a számítógép – Műsor a mesterséges intelligenciáról</h3>
+                        <p class="featured-lead">Csupán egy számítógép a mesterséges intelligencia, vagy valami annál sokkal több? Közel egyórás kerekasztal-műsor és mélyfúrás a technológiai, jogi és társadalmi határokról Dr. Rab Árpád társadalomkutatóval, Dr. Mezei Péter jogásszal, Dr. Berend Gábor informatikussal, Kiss Donáttal és magával a ChatGPT-vel. Egyben az SZTE Kommunikáció- és médiatudomány BA szakán készített szakdolgozat mestermunkája.</p>
+                        <div class="featured-footer">
+                            <span class="platform-source-label">YouTube Műsor &amp; Mestermunka</span>
+                            <span class="action-trigger-text">Megtekintés a YouTube-on ↗</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hZ98bDYryig" target="_blank" rel="noopener noreferrer" class="featured-card" title="Kommcast 2026. október – Petur András, Krokovay Ábel és Lovas Marci, Jancsák Csaba, Juharos Ágota, Kiss Endi — Megnyitás új lapon">
+                    <div class="featured-thumb-wrap">
+                        <img src="assets/podcasts/kommcast-2026-10.jpg" alt="Kommcast 2026. október – Petur András, Krokovay Ábel és Lovas Marci, Jancsák Csaba, Juharos Ágota, Kiss Endi" decoding="async">
+                        <div class="featured-badge-top">
+                            <span class="platform-pill podcast">★ Legfrissebb Podcast Adás</span>
+                        </div>
+                        <div class="featured-metric-top">55 perc adás</div>
+                    </div>
+                    <div class="featured-body">
+                        <div class="featured-meta-line">
+                            <time datetime="2026-10-30">2026. október 30.</time>
+                            <span>Kommcast Magazin</span>
+                        </div>
+                        <h3 class="featured-headline">Kommcast 2026. október – Petur András, Krokovay Ábel és Lovas Marci, Jancsák Csaba, Juharos Ágota, Kiss Endi</h3>
+                        <p class="featured-lead">(0:00) Bevezető – Vajda Noa Pálma és Zombor Marcell (02:10) Petur András, a Sport TV kommentátor-műsorvezetője – Lajos Léna interjúja (10:41) Krokovay Ábel és Lovas Marci, a Balkán VIP tagjai – Vámos Kata és Zombor Marcell beszélgetése (20:00) Jancsák Csaba docens, az SZTE 1956-os Emlékbizottságának elnöke – Rádi Krisztián interjúja (33:08) Juharos Ágota, a Kutyával Egy Mosolyért Alapítvány kuratóriumi titkára – Balla Nadin beszélgetése (45:41) Kiss Endi, a Hooligans dobosa – Vid Luca interjúja</p>
+                        <div class="featured-footer">
+                            <span class="platform-source-label">Kommcast • Vágó</span>
+                            <span class="action-trigger-text">Adás meghallgatása ↗</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-    <!-- ==========================================================================
-         Eszköztár: Egyenrangú Kategória Szűrők & Kereső
-         ========================================================================== -->
-    <section class="toolbar-container">
-        
-        <!-- Platform Szűrők: Összes, HVG Cikkek, YouTube, Podcast -->
-        <div class="filter-group" role="group" aria-label="Kategória szűrők">
-            <button type="button" class="filter-tab active" data-filter="all">
-                <span>Összes</span>
-                <span class="tab-count">0</span>
-            </button>
-            <button type="button" class="filter-tab" data-filter="hvg">
-                <span>📰 HVG Cikkek</span>
-                <span class="tab-count">0</span>
-            </button>
-            <button type="button" class="filter-tab" data-filter="youtube">
-                <span>🎬 YouTube Videók</span>
-                <span class="tab-count">0</span>
-            </button>
-            <button type="button" class="filter-tab" data-filter="podcast">
-                <span>🎙️ Podcastok</span>
-                <span class="tab-count">0</span>
-            </button>
-        </div>
+        <!-- ==========================================================================
+             Média Archívum (Eszköztár + Kategória Alszűrők + Szerkesztőségi Lista)
+             ========================================================================== -->
+        <section class="archive-section" aria-labelledby="archiveHeading">
+            <h2 id="archiveHeading" class="sr-only">Média archívum — HVG cikkek, YouTube videók és podcastok</h2>
 
-        <input type="search" id="searchInput" class="search-input" placeholder="Keresés cím vagy téma szerint..." aria-label="Keresés cím vagy téma szerint">
+            <div class="toolbar-container">
+                <!-- Platform Szűrők: Összes, HVG Cikkek, YouTube, Podcast -->
+                <div class="filter-group" role="group" aria-label="Kategória szűrők">
+                    <button type="button" class="filter-tab active" data-filter="all">
+                        <span>Összes</span>
+                        <span class="tab-count">0</span>
+                    </button>
+                    <button type="button" class="filter-tab" data-filter="hvg">
+                        <span>📰 HVG Cikkek</span>
+                        <span class="tab-count">0</span>
+                    </button>
+                    <button type="button" class="filter-tab" data-filter="youtube">
+                        <span>🎬 YouTube Videók</span>
+                        <span class="tab-count">0</span>
+                    </button>
+                    <button type="button" class="filter-tab" data-filter="podcast">
+                        <span>🎙️ Podcastok</span>
+                        <span class="tab-count">0</span>
+                    </button>
+                </div>
 
-    </section>
+                <input type="search" id="searchInput" class="search-input" placeholder="Keresés cím vagy téma szerint..." aria-label="Keresés cím vagy téma szerint">
+            </div>
 
-    <!-- ==========================================================================
-         Kategória Alszűrő Sáv (HVG rovatok / YouTube típusok / Podcast szerepkörök)
-         ========================================================================== -->
-    <div class="subfilter-container" id="subfilterBar"></div>
+            <div class="subfilter-container" id="subfilterBar"></div>
 
-    <!-- ==========================================================================
-         Fő Tartalomjegyzék Konténer (Dinamikusan renderelve)
-         ========================================================================== -->
-    <main id="mediaContainer" class="view-horizontal">
-        <!-- JS generálja a teljes szélességű szerkesztőségi listát -->
+            <!-- Fő Tartalomjegyzék Konténer (Dinamikusan renderelve, JS nélkül noscript fallbackkel) -->
+            <div id="mediaContainer" class="view-horizontal">
+                <noscript>
+                    <div class="noscript-archive">
+                        <h3>Válogatott publikációk és megjelenések</h3>
+                        <ul>
+                            <li><a href="https://pulzus.hvg.hu/egeszseg/20261109_szules-utani-depresszio-megelozese-rose-program" target="_blank" rel="noopener noreferrer">Már a szülés előtt elkezdhető a szülés utáni depresszió megelőzése</a> — HVG Pulzus (2026-11-09)</li>
+                            <li><a href="https://hvg.hu/360/20261108_hvg-ai-klonozott-szoftverek-szabadalom-szerzoi-jog-artcraft" target="_blank" rel="noopener noreferrer">Rendben van az ingyen Photoshop és Word? Egyre több program esik le az AI-kamionról</a> — hvg360 (2026-11-08)</li>
+                            <li><a href="https://hvg.hu/tudomany/20260928_zsarolovirus-tamadas-ugyeszseg-vadirat-visszafejto-program" target="_blank" rel="noopener noreferrer">Az Ügyészség nevében egy majdnem tökéletes támadás indult, aztán jött a tökéletes is</a> — HVG Tech (2026-09-28)</li>
+                            <li><a href="https://hvg.hu/360/20260927_hvg-mesterseges-intelligencia-matematika-openai-vita" target="_blank" rel="noopener noreferrer">Mi ez a felfordulás most a matematikában? Már miért döntené romba az AI?</a> — hvg360 (2026-09-27)</li>
+                            <li><a href="https://hvg.hu/360/20260817_magyar-allamkincstar-elleni-kibertamadas-elemzes-hvg-ebx" target="_blank" rel="noopener noreferrer">Nem az a csoda, hogy feltörték az Államkincstár rendszerét, inkább az, hogy csak most</a> — hvg360 (2026-08-17)</li>
+                            <li><a href="https://www.youtube.com/watch?v=8Z3wvY1Ghh0" target="_blank" rel="noopener noreferrer">MI, a számítógép – Műsor a mesterséges intelligenciáról</a> — YouTube / SZTE BA Mestermunka (2026-08-10)</li>
+                            <li><a href="https://hvg.hu/360/20260528_hvg-erdos-pal-sejtes-vegtelen-kockas-fuzet-cafolat-openai-mesterseges-intelligencia" target="_blank" rel="noopener noreferrer">Áttörésként emlegetik, hogy Erdős Pál „végtelen kockás füzetét” megcáfolta az AI</a> — hvg360 (2026-05-28)</li>
+                            <li><a href="https://www.youtube.com/watch?v=pG5gYTitEPw&amp;t=1124s" target="_blank" rel="noopener noreferrer">24.hu Ziccer: Szoboszlait is elrontja Slot? – Balogh Martin a fantasy futballról és a gamifikációról</a> — 24.hu Ziccer vendégadás (2025-10-20)</li>
+                            <li><a href="https://open.spotify.com/episode/0tIb8QsrhWbxVlddB5pZ1p" target="_blank" rel="noopener noreferrer">Gameweek 8 előzetes kibeszélő: Wildcard 2024/25 legjobb magyar menedzserével (vendég: Balogh Martin) – 206. adás</a> — Fantasy Besztlíg (2025-10-16)</li>
+                            <li><a href="https://www.youtube.com/watch?v=sxOs0SkHmEo&amp;t=799s" target="_blank" rel="noopener noreferrer">20x TOP 100 FPL GW1 Teams – Balogh Martin a világ 12. helyezettjeként (FPL Harry)</a> — YouTube nemzetközi elemzés (2025-08-10)</li>
+                            <li><a href="https://www.youtube.com/watch?v=dyraHz9U8iU" target="_blank" rel="noopener noreferrer">A bliccelés lélektana és a közösségi közlekedés – Kovács Bendegúz, a BKK szóvivője</a> — Kommcast Különkiadás, riporter (2024-11-12)</li>
+                            <li><a href="https://www.youtube.com/watch?v=9GD0oSlTzak" target="_blank" rel="noopener noreferrer">Közveszélyes néma száguldozás vagy a jövő mobilitása? – Bazsó Gábor Karotta az elektromos autókról</a> — Kommcast Különkiadás, riporter (2024-05-29)</li>
+                        </ul>
+                    </div>
+                </noscript>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Szakmai Háttér & Gyakori Kérdések (CV, Témakörök, GEO/SEO Összefoglaló)
+             ========================================================================== -->
+        <section class="profile-summary-section" aria-labelledby="summaryHeading">
+            <div class="summary-header">
+                <h2 class="summary-eyebrow" id="summaryHeading">Szakmai háttér &amp; Gyakori kérdések</h2>
+                <div class="summary-caption">Tanulmányok, mérföldkövek és lényegi tények</div>
+            </div>
+
+            <div class="profile-summary-grid">
+                <div class="cv-column">
+                    <h3 class="summary-column-title">Tanulmányok &amp; szakmai mérföldkövek</h3>
+                    <ul class="cv-list">
+                        <li class="cv-item">
+                            <div class="cv-meta">
+                                <span class="cv-org">HVG</span>
+                                <span class="cv-period">2025 ősz – jelenleg</span>
+                            </div>
+                            <div class="cv-title">Gyakornok, majd külsős szerző</div>
+                            <p class="cv-desc">2025 őszi szerkesztőségi gyakornokságát követően külsős szerzőként publikál a HVG nyomtatott hetilapjában és online felületein (hvg.hu, hvg360, HVG Pulzus).</p>
+                        </li>
+                        <li class="cv-item">
+                            <div class="cv-meta">
+                                <span class="cv-org">SZTE TTIK</span>
+                                <span class="cv-period">Végzős hallgató</span>
+                            </div>
+                            <div class="cv-title">Gazdaságinformatikus BSc</div>
+                            <p class="cv-desc">Szoftverfejlesztési, adatbázis- és rendszertervezési, valamint közgazdasági és vállalati információs rendszerekre épülő képzés az SZTE TTIK Informatikai Intézetében.</p>
+                        </li>
+                        <li class="cv-item">
+                            <div class="cv-meta">
+                                <span class="cv-org">SZTE BTK</span>
+                                <span class="cv-period">Diploma: 2026</span>
+                            </div>
+                            <div class="cv-title">Kommunikáció- és médiatudomány BA</div>
+                            <p class="cv-desc">2026-ban megszerzett diploma a Szegedi Tudományegyetem Bölcsészet- és Társadalomtudományi Karán (szakdolgozati mestermunka: MI, a számítógép).</p>
+                        </li>
+                        <li class="cv-item">
+                            <div class="cv-meta">
+                                <span class="cv-org">Kommcast Podcast &amp; SZTE rádióstúdió</span>
+                                <span class="cv-period">2024 – jelenleg</span>
+                            </div>
+                            <div class="cv-title">Állandó stábtag, vágó &amp; rádiós demonstrátor</div>
+                            <p class="cv-desc">Riporteri közreműködés és a havi Kommcast-adások vágása, emellett jelenleg is aktív rádiós demonstrátorként segíti a hallgatókat a podcast- és rádiós eszközhasználat elsajátításában, valamint a stúdióeszközök beállításában és használatában.</p>
+                        </li>
+                        <li class="cv-item">
+                            <div class="cv-meta">
+                                <span class="cv-org">Fantasy Premier League (FPL)</span>
+                                <span class="cv-period">2024/25-ös szezon (2025)</span>
+                            </div>
+                            <div class="cv-title">2024/25 világranglista 12. hely • Legjobb magyar menedzser</div>
+                            <p class="cv-desc">A 2024/25-ös szezonban (2025-ben) több mint 11 millió játékosból a világ 12. helyezettje és a legjobb magyar menedzser; az eredmény nyomán szakértői vendégszereplések a 24.hu Ziccer műsorában, a Fantasy Besztlígben és az FPL Harry csatornán.</p>
+                        </li>
+                    </ul>
+
+                    <div class="topics-block">
+                        <h3 class="summary-column-title">Főbb témakörök</h3>
+                        <ul class="topic-chips" aria-label="Főbb publikációs és szakmai témakörök">
+                            <li class="topic-chip">Mesterséges intelligencia</li>
+                            <li class="topic-chip">Kiberbiztonság</li>
+                            <li class="topic-chip">Technológia &amp; digitális jog</li>
+                            <li class="topic-chip">Gazdaság &amp; oktatás</li>
+                            <li class="topic-chip">Média &amp; podcast-utómunka</li>
+                            <li class="topic-chip">Fantasy Premier League &amp; futball</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-column">
+                    <h3 class="summary-column-title">Gyakori kérdések</h3>
+                    <div class="faq-list">
+                        <article class="faq-item">
+                            <h4 class="faq-question">Ki az a Balogh Martin?</h4>
+                            <p class="faq-answer">Balogh Martin magyar független újságíró és médiaalkotó. A 2025 őszi HVG-gyakornokságát követően külsős szerzőként publikál a HVG nyomtatott hetilapjában és online felületein (hvg.hu, hvg360, HVG Pulzus). 2026-ban szerzett Kommunikáció- és médiatudomány BA diplomát az SZTE-n, jelenleg az SZTE TTIK gazdaságinformatikus BSc végzős hallgatója. Emellett saját YouTube-műsorokat készít, a Kommcast podcast állandó stábtagja és vágója, valamint aktív rádiós demonstrátorként a stúdióeszközök beállításában és a podcast-eszközhasználat elsajátításában segíti a hallgatókat.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h4 class="faq-question">Milyen témákban publikál és készít tartalmakat?</h4>
+                            <p class="faq-answer">Fő területei a mesterséges intelligencia, a kiberbiztonság, a technológia és a digitális tulajdonjog, emellett gazdasági, társadalmi, oktatási és egészségügyi témájú cikkeket is ír. Audiovizuális munkái közé tartoznak tech és közpolitikai YouTube-interjúk, hardvertesztek, a Kommcast podcast riporteri és hangvágói feladatai, valamint aktív rádiós demonstrátorként a hallgatók segítése a stúdiós és podcast-eszközök beállításában és használatában.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h4 class="faq-question">Milyen eredményt ért el a Fantasy Premier League-ben?</h4>
+                            <p class="faq-answer">A 2024/25-ös Fantasy Premier League (FPL) szezonban (2025-ben) több mint 11 millió játékos közül a világranglista 12. helyén végzett, ezzel a szezon legjobb magyar menedzsere lett. Eredménye kapcsán szakértő vendégként szerepelt a 24.hu Ziccer műsorában, a Fantasy Besztlíg 206. adásában és az FPL Harry nemzetközi elemzővideójában.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h4 class="faq-question">Hol érhetők el a hivatalos profiljai és hogyan lehet kapcsolatba lépni vele?</h4>
+                            <p class="faq-answer">Munkái és hivatalos csatornái ezen a portfólióoldalon (baloghmartin.com), a HVG szerzői archívumában, a YouTube-on (@NotMartinBalogh) és a Kommcast podcastban érhetők el. Közvetlen megkereséshez az oldalon található E-mail gomb, valamint hivatalos LinkedIn- és X-profilja (@NotMartinBalogh) használható.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- ==========================================================================
@@ -194,30 +651,30 @@
                 <span class="brand-tagline">• Független Média Portfólió</span>
             </div>
             <div class="footer-social-links">
-                <a href="#" class="social-pill email protected-contact" data-u="baloghmartin" data-d="icloud.com" title="E-mail cím másolása">
+                <button type="button" class="social-pill email protected-contact" data-u="baloghmartin" data-d="icloud.com" title="E-mail cím másolása">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     <span>E-mail</span>
-                </a>
-                <a href="https://x.com/NotMartinBalogh" target="_blank" rel="noopener noreferrer" class="social-pill x-twitter" title="X (Twitter) - @NotMartinBalogh">
+                </button>
+                <a href="https://x.com/NotMartinBalogh" target="_blank" rel="noopener noreferrer me" class="social-pill x-twitter" title="X (Twitter) - @NotMartinBalogh">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     @NotMartinBalogh
                 </a>
-                <a href="https://www.linkedin.com/in/martin-balogh-068176300/" target="_blank" rel="noopener noreferrer" class="social-pill linkedin" title="LinkedIn profil">
+                <a href="https://www.linkedin.com/in/martin-balogh-068176300/" target="_blank" rel="noopener noreferrer me" class="social-pill linkedin" title="LinkedIn profil">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                     LinkedIn
                 </a>
-                <a href="https://www.instagram.com/notmartinbalogh/" target="_blank" rel="noopener noreferrer" class="social-pill instagram" title="Instagram profil">
+                <a href="https://www.instagram.com/notmartinbalogh/" target="_blank" rel="noopener noreferrer me" class="social-pill instagram" title="Instagram profil">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     Instagram
                 </a>
-                <a href="https://www.facebook.com/notmartinbalogh" target="_blank" rel="noopener noreferrer" class="social-pill facebook" title="Facebook profil">
+                <a href="https://www.facebook.com/notmartinbalogh" target="_blank" rel="noopener noreferrer me" class="social-pill facebook" title="Facebook profil">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     Facebook
                 </a>
             </div>
         </div>
         <div class="site-footer-bottom">
-            <div>SZTE Kommunikáció- és médiatudomány • HVG • YouTube • Podcastok</div>
+            <div>SZTE Kommunikáció- és médiatudomány BA (2026) • SZTE TTIK Gazdaságinformatikus BSc • HVG • YouTube • Podcastok</div>
             <div>© 2026 Balogh Martin. Minden jog fenntartva.</div>
         </div>
     </footer>
@@ -225,7 +682,7 @@
 </div>
 
 <!-- Média adatbázis (data.js) és alkalmazás logika (app.js) -->
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script src="data.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 </html>

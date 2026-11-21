@@ -33,8 +33,9 @@ data.js       – MEDIA_DATABASE tömb (43 elem, kézzel ellenőrzött adatok)
 app.js        – kliensoldali logika (szűrés, keresés, renderelés)
 assets/       – borítóképek és ikonok (hvg/, youtube/, podcasts/, author.jpg, favicon.svg, apple-touch-icon.png)
 favicon.ico   – többméretű (16x16, 32x32, 48x48) böngésző ikon
-robots.txt    – keresőmotorok indexelési útmutatója
+robots.txt    – keresőmotorok és AI-botok indexelési útmutatója
 sitemap.xml   – oldaltérkép a keresőmotorokhoz
+llms.txt      – strukturált Markdown összefoglaló AI-keresőkhöz (GEO)
 ```
 
 **Külső függőségek:** nincs (tiszta Vanilla JS + CSS).

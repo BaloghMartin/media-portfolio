@@ -105,7 +105,7 @@ function renderFeaturedRow() {
         return `
             <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="featured-card" title="${escapeHtml(item.title)} — Megnyitás új lapon">
                 <div class="featured-thumb-wrap">
-                    <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}">
+                    <img src="${escapeHtml(item.thumbnail)}" alt="${escapeHtml(item.title)}" decoding="async">
                     <div class="featured-badge-top">
                         <span class="platform-pill ${pillClass}">★ ${resolvedPillText}</span>
                     </div>
@@ -113,7 +113,7 @@ function renderFeaturedRow() {
                 </div>
                 <div class="featured-body">
                     <div class="featured-meta-line">
-                        <span>${escapeHtml(formatDate(item.date))}</span>
+                        <time datetime="${escapeHtml(item.date)}">${escapeHtml(formatDate(item.date))}</time>
                         <span>${escapeHtml(item.column)}</span>
                     </div>
                     <h3 class="featured-headline">${escapeHtml(item.title)}</h3>
@@ -186,9 +186,9 @@ function renderCard(item) {
             <div class="h-content">
                 <div class="h-meta-row">
                     ${getPlatformBadge(item)}
-                    <span class="h-date">${escapeHtml(formatDate(item.date))} • ${escapeHtml(item.readTime)}</span>
+                    <span class="h-date"><time datetime="${escapeHtml(item.date)}">${escapeHtml(formatDate(item.date))}</time> • ${escapeHtml(item.readTime)}</span>
                 </div>
-                <h2 class="h-headline">${escapeHtml(item.title)}</h2>
+                <h3 class="h-headline">${escapeHtml(item.title)}</h3>
                 <p class="h-lead">${escapeHtml(item.lead)}</p>
                 <div class="h-footer">
                     <span class="platform-source-label">${escapeHtml(item.platformLabel)}</span>

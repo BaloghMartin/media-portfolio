@@ -1,0 +1,69 @@
+# Balogh Martin — Független Újságíró & Média Portfólió
+
+> Utolsó frissítés / Last updated: 2026-11-21
+>
+> Balogh Martin (Martin Balogh, `@NotMartinBalogh`) hivatalos magyar média portfóliója és szakmai archívuma: HVG külsős cikkek (hvg.hu, hvg360, HVG Pulzus), YouTube-műsorok, Kommcast podcast szereplések és hangvágói munkák, valamint Fantasy Premier League (FPL) szakértői megjelenések.
+
+## English Summary
+
+**Martin Balogh** (`Balogh Martin`, `@NotMartinBalogh`) is a Hungarian independent journalist, media creator, and audio/podcast editor based in Hungary. Following his editorial internship at **HVG** in Autumn 2025, he has been a regular external contributor (*külsős szerző*) for HVG's print weekly and digital editions (`hvg.hu`, `hvg360`, `HVG Pulzus`), covering artificial intelligence, cybersecurity, technology, digital ownership, economics, education, and health. He earned a BA in Communication and Media Studies from the University of Szeged (SZTE BTK) in 2026 and is a graduating BSc student in Business Informatics (*Gazdaságinformatikus BSc* — software development, databases, systems design, and business/economics fundamentals at SZTE TTIK's Institute of Informatics). He produces original YouTube shows, is a permanent crew member and audio editor of the **Kommcast** podcast, and remains an active radio teaching assistant (*rádiós demonstrátor*) helping students learn podcast/radio equipment and studio setup. In the **2024/25 Fantasy Premier League (FPL) season (2025)**, he finished **12th worldwide out of 11+ million managers** (top-ranked Hungarian manager).
+
+## Tanulmányok és szakmai mérföldkövek
+
+- **HVG (2025 ősz – jelenleg):** 2025 őszi szerkesztőségi gyakornokság, majd külsős szerzői munka a HVG nyomtatott hetilapjában és online felületein (`hvg.hu`, `hvg360`, `HVG Pulzus`).
+- **SZTE TTIK — Gazdaságinformatikus BSc (végzős hallgató):** Szoftverfejlesztési, adatbázis- és rendszertervezési, valamint közgazdasági és vállalati információs rendszerekre épülő képzés az SZTE TTIK Informatikai Intézetében.
+- **SZTE BTK — Kommunikáció- és médiatudomány BA (Diploma: 2026):** 2026-ban megszerzett diploma (szakdolgozati mestermunka: *MI, a számítógép*).
+- **Kommcast Podcast & SZTE rádióstúdió (2024 – jelenleg):** Állandó stábtag (riporter és vágó); a Kommcast-adások vágása mellett jelenleg is aktív rádiós demonstrátorként segíti a hallgatókat a podcast- és rádiós eszközhasználat elsajátításában, valamint a stúdióeszközök beállításában és használatában.
+- **YouTube (`@NotMartinBalogh`):** Saját technológiai, közéleti kerekasztal-műsorok és hardvertesztek.
+- **Fantasy Premier League (2024/25-ös szezon, 2025):** A 2024/25-ös szezonban (2025-ben) a világranglista 12. helyezettje (11+ millió menedzserből), a szezon legjobb magyar menedzsere; szakértői vendégszereplések a *24.hu Ziccer*, a *Fantasy Besztlíg* és az *FPL Harry* műsoraiban.
+
+## Főbb témakörök / Key Topics
+
+- Mesterséges intelligencia és etika / Artificial Intelligence (AI)
+- Kiberbiztonság és adatvédelem / Cybersecurity
+- Technológiai újságírás és digitális tulajdonjog / Technology Journalism & Digital Ownership
+- Gazdaságinformatika, szoftverfejlesztés és vállalati információs rendszerek / Business Informatics & Software Systems
+- Gazdaság, oktatás és egészségügy / Economics, Education & Health
+- Média- és podcastgyártás, hangvágás, rádiós stúdióeszközök / Media Production, Podcast Editing & Studio Audio
+- Fantasy Premier League (FPL) és futball-adatelemzés / Football & Sports Analytics
+
+## Hivatalos profilok és kapcsolat / Official Profiles & Contact
+
+- Hivatalos portfólió és e-mail gomb: [baloghmartin.com](https://baloghmartin.com/)
+- HVG szerzői archívum: [hvg.hu/szerzok/balogh-martin](https://hvg.hu/szerzok/balogh-martin)
+- YouTube: [youtube.com/@NotMartinBalogh](https://www.youtube.com/@NotMartinBalogh)
+- X (Twitter): [x.com/NotMartinBalogh](https://x.com/NotMartinBalogh)
+- LinkedIn: [linkedin.com/in/martin-balogh-068176300](https://www.linkedin.com/in/martin-balogh-068176300/)
+- Instagram: [instagram.com/notmartinbalogh](https://www.instagram.com/notmartinbalogh/)
+- Facebook: [facebook.com/notmartinbalogh](https://www.facebook.com/notmartinbalogh)
+- Kommcast Podcast (Apple Podcasts): [Kommcast az Apple Podcasts-on](https://podcasts.apple.com/us/podcast/kommcast/id1539053555)
+
+## Válogatott kiemelt munkák / Selected Works
+
+### HVG Cikkek (Articles)
+
+- [Már a szülés előtt elkezdhető a szülés utáni depresszió megelőzése](https://pulzus.hvg.hu/egeszseg/20261109_szules-utani-depresszio-megelozese-rose-program) — HVG Pulzus, 2026-11-09
+- [Rendben van az ingyen Photoshop és Word? Egyre több program esik le az AI-kamionról](https://hvg.hu/360/20261108_hvg-ai-klonozott-szoftverek-szabadalom-szerzoi-jog-artcraft) — hvg360, 2026-11-08
+- [Az Ügyészség nevében egy majdnem tökéletes támadás indult, aztán jött a tökéletes is](https://hvg.hu/tudomany/20260928_zsarolovirus-tamadas-ugyeszseg-vadirat-visszafejto-program) — HVG Tech, 2026-09-28
+- [Mi ez a felfordulás most a matematikában? Már miért döntené romba az AI?](https://hvg.hu/360/20260927_hvg-mesterseges-intelligencia-matematika-openai-vita) — hvg360, 2026-09-27
+- [Nem az a csoda, hogy feltörték az Államkincstár rendszerét, inkább az, hogy csak most](https://hvg.hu/360/20260817_magyar-allamkincstar-elleni-kibertamadas-elemzes-hvg-ebx) — hvg360, 2026-08-17
+- [Megveszel egy drága játékot, ami nem is lesz a tiéd, és másnak sem adhatod el soha](https://hvg.hu/360/20260718_hvg-gaming-sony-playstation-lemezek-fizikai-adathordozok-jatekok-konyvek-filmek-digitalis-tulajdonjog) — hvg360, 2026-07-18
+- [Zsírabb KRÉTA kellene a közoktatásban, és vannak is már rá ötletek](https://hvg.hu/360/20260704_hvg-kreta-2-0-koncepcio-zalehy-kozoktatasi-rendszer-e-naplo) — hvg360, 2026-07-04
+- [Áttörésként emlegetik, hogy Erdős Pál „végtelen kockás füzetét” megcáfolta az AI](https://hvg.hu/360/20260528_hvg-erdos-pal-sejtes-vegtelen-kockas-fuzet-cafolat-openai-mesterseges-intelligencia) — hvg360, 2026-05-28
+- [Félmilliárd forintot temet a föld alá Szeged, hogy ne száradjon ki a belváros](https://hvg.hu/360/20260316_hvg-szeged-gogol-utca-szivacsvaros-klimavaltozas-hoszigethatas) — hvg360, 2026-03-16
+- [Miért indulnak a magyarok már a rajtnál hátrányból a téli olimpián?](https://hvg.hu/360/20260209_hvg-pengeelmunkasok-milano-cortina-teli-olimpia-sportok-technologiai-dopping) — hvg360, 2026-02-09
+
+### YouTube Műsorok & Vendégszereplések (Video & Guest Appearances)
+
+- [MI, a számítógép – Műsor a mesterséges intelligenciáról](https://www.youtube.com/watch?v=8Z3wvY1Ghh0) — SZTE BA mestermunka, kerekasztal-műsor (2026-08-10)
+- [24.hu Ziccer: Szoboszlait is elrontja Slot? – Balogh Martin a fantasy futballról és a gamifikációról](https://www.youtube.com/watch?v=pG5gYTitEPw&t=1124s) — 24.hu Ziccer szakértői vendég (2025-10-20)
+- [20x TOP 100 FPL GW1 Teams – Balogh Martin a világ 12. helyezettjeként (FPL Harry)](https://www.youtube.com/watch?v=sxOs0SkHmEo&t=799s) — Nemzetközi FPL elemzővideó (2025-08-10)
+- [20 Éve Az Európai Unióban – Beszélgetés Pelle Anita és Löffler Tibor Szakértőkkel](https://www.youtube.com/watch?v=oYN7en4FbeQ) — Szakértői interjú (2024-05-01)
+- [Stúdió minőség töredék áron? – Maono PD400X mikrofon teszt](https://www.youtube.com/watch?v=IvXxUCY1-Ro) — Hardverteszt (2024-02-15)
+
+### Podcastok (Podcast Episodes & Radio)
+
+- [Kommcast 2026. október – Petur András, Krokovay Ábel és Lovas Marci, Jancsák Csaba, Juharos Ágota, Kiss Endi](https://www.youtube.com/watch?v=hZ98bDYryig) — Vágó & utómunka (2026-10-30)
+- [Gameweek 8 előzetes kibeszélő: Wildcard 2024/25 legjobb magyar menedzserével (vendég: Balogh Martin) – 206. adás](https://open.spotify.com/episode/0tIb8QsrhWbxVlddB5pZ1p) — Fantasy Besztlíg vendégadás (2025-10-16)
+- [A bliccelés lélektana és a közösségi közlekedés – Kovács Bendegúz, a BKK szóvivője](https://www.youtube.com/watch?v=dyraHz9U8iU) — Kommcast Különkiadás, riporter (2024-11-12)
+- [Közveszélyes néma száguldozás vagy a jövő mobilitása? – Bazsó Gábor Karotta az elektromos autókról](https://www.youtube.com/watch?v=9GD0oSlTzak) — Kommcast Különkiadás, riporter (2024-05-29)
