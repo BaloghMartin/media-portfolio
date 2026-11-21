@@ -17,6 +17,7 @@ Az oldal három egyenrangú kategóriában mutatja be a médiatartalmakat:
 
 ## Funkciók
 
+- **Oldalon belüli ragadós navigáció:** gyorsugrás a kiemelt megjelenésekhez, a teljes archívumhoz és a szakmai háttérhez, aktív szekciójelzéssel és vissza a tetejére gombbal
 - **Kiemelt szekció:** mindhárom platform legfrissebb tartalma kiemelt kártyaként az oldal tetején
 - **Időrendi sorrend:** legújabbtól a legrégebbi felé (2026 → 2024)
 - **Kategóriaszűrés & Alszűrők:** Összes / HVG (HVG360, Tech, Pulzus, Gazdaság) / YouTube (Saját, Vendég) / Podcast (Vendég, Riporter, Vágó) bontásban
@@ -49,7 +50,7 @@ Helyi megtekintéshez nyisd meg az `index.html` fájlt böngészőben, vagy ind�
 
 ## Elérhetőségek
 
-- **E-mail:** baloghmartin@icloud.com
+- **Kapcsolat (E-mail gomb):** [baloghmartin.com](https://baloghmartin.com/)
 - **X (Twitter):** [@NotMartinBalogh](https://x.com/NotMartinBalogh)
 - **LinkedIn:** [Martin Balogh](https://www.linkedin.com/in/martin-balogh-068176300/)
 - **Instagram:** [@notmartinbalogh](https://www.instagram.com/notmartinbalogh/)

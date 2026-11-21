@@ -3,7 +3,7 @@
 
    Stíluslap struktúra:
    1. Változók és alapbeállítások
-   2. Szerzői bemutatkozó banner
+   2. Szerzői bemutatkozó banner & oldalon belüli navigáció
    3. Kiemelt szekció (Top 3)
    4. Eszköztár (szűrők, kereső)
    5. Kategória alszűrő sáv
@@ -24,7 +24,7 @@
 
     --text-primary: #f4f4f6;
     --text-secondary: #a0a0ab;
-    --text-muted: #646470;
+    --text-muted: #8b8b99;
 
     /* Kategória és Platform Színek */
     --platform-hvg: #f26522;
@@ -51,6 +51,10 @@
     -webkit-font-smoothing: antialiased;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-page);
     color: var(--text-primary);
@@ -75,10 +79,11 @@ body {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    margin-bottom: 36px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 32px;
     padding: 40px;
     min-height: 230px;
 }
@@ -222,6 +227,14 @@ body {
     color: #38bdf8;
 }
 
+.social-pill.is-copied,
+.social-pill.email.is-copied:hover {
+    color: #4ade80;
+    border-color: #4ade80;
+    cursor: default;
+    transform: none;
+}
+
 .social-pill.x-twitter:hover {
     border-color: #ffffff;
     color: #ffffff;
@@ -280,6 +293,121 @@ body {
         width: 140px;
         height: 165px;
     }
+}
+
+/* ==========================================================================
+   Oldalon belüli navigációs sáv (Sticky)
+   ========================================================================== */
+.section-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin: 0 -20px 22px -20px;
+    padding: 12px 20px 0 20px;
+    background: transparent;
+    transition: background-color var(--transition);
+}
+
+.section-nav.is-stuck {
+    background: var(--bg-page);
+}
+
+.section-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 36px;
+    background: linear-gradient(
+        to bottom,
+        var(--bg-page) 0%,
+        rgba(12, 12, 15, 0.72) 45%,
+        transparent 100%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+
+.section-nav.is-stuck::after {
+    opacity: 1;
+}
+
+.section-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.section-nav.is-stuck .section-nav-bar {
+    border-color: var(--border-strong);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.section-nav-links {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.section-nav-link,
+.section-nav-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.section-nav-link:hover,
+.section-nav-top:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-subtle);
+}
+
+.section-nav-link.active {
+    color: #ffffff;
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-strong);
+    box-shadow: inset 0 -2px 0 var(--accent-gold);
+}
+
+.section-nav-top {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.section-nav.is-stuck .section-nav-top,
+.section-nav-top:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.featured-section,
+.archive-section,
+.profile-summary-section {
+    scroll-margin-top: 84px;
 }
 
 /* ==========================================================================
@@ -435,8 +563,10 @@ body {
 
 .featured-meta-line {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 4px 10px;
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-muted);
@@ -591,7 +721,6 @@ body {
     font-size: 13px;
     color: var(--text-primary);
     font-family: inherit;
-    outline: none;
     transition: var(--transition);
 }
 
@@ -844,6 +973,34 @@ body {
 @media (max-width: 680px) {
     .site-container {
         padding: 20px 14px 60px 14px;
+    }
+    .section-nav {
+        margin: 0 -14px 20px -14px;
+        padding: 8px 14px 0 14px;
+    }
+    .section-nav::after {
+        height: 28px;
+    }
+    .section-nav-bar {
+        padding: 6px 8px;
+        gap: 6px;
+    }
+    .section-nav-links {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .section-nav-links::-webkit-scrollbar {
+        display: none;
+    }
+    .section-nav-link {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    .section-nav-top {
+        padding: 5px 9px;
+    }
+    .section-nav-top-text {
+        display: none;
     }
     .featured-section {
         padding: 18px 16px 20px 16px;
@@ -1124,17 +1281,22 @@ body {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+.search-input:focus-visible {
     outline: 2px solid var(--border-strong);
     outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
     *,
     *::before,
     *::after {

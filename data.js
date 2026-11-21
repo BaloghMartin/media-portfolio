@@ -682,8 +682,8 @@ const MEDIA_DATABASE = [
         "lead": "Magyarország uniós csatlakozásának 20. évfordulójára készült mélyfúrás: gazdasági integráció, politikai intézményrendszer és társadalmi mérleg az SZTE GTK és ÁJTK oktatóival. Elhangzott a Kommcast 2024. decemberi adásában [02:25]. Riporter: Balogh Martin.",
         "date": "2024-12-30",
         "readTime": "15 perc blokk",
-        "thumbnail": "assets/podcasts/kommcast-pelle-loffler.jpg",
-        "url": "https://www.youtube.com/watch?v=oYN7en4FbeQ",
+        "thumbnail": "assets/podcasts/kommcast-main.jpg",
+        "url": "https://podcasts.apple.com/us/podcast/kommcast-2024-december-h%C3%BAsz-%C3%A9ve-csatlakoztunk-az-eu/id1539053555?i=1000682113810",
         "tags": [
             "EU20",
             "Pelle Anita",

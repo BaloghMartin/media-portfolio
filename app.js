@@ -9,6 +9,7 @@ let currentFilter = "all";
 let currentSubFilter = "all";
 let currentSearch = "";
 let mediaItems = [];
+let refreshSectionNav = () => {};
 
 const MONTHS = [
     "január", "február", "március", "április", "május", "június",
@@ -87,16 +88,23 @@ document.addEventListener("DOMContentLoaded", () => {
     renderContent();
     initSearch();
     initEmailCopy();
+    initSectionNav();
 });
 
 function renderFeaturedRow() {
     const featuredGrid = document.getElementById("featuredGrid");
     if (!featuredGrid) return;
 
-    featuredGrid.innerHTML = FEATURED_CONFIG.map(({ platform, pillText, actionLabel }) => {
-        const item = mediaItems.find(entry => entry.platform === platform);
-        if (!item) return "";
+    const featured = FEATURED_CONFIG
+        .map(cfg => ({ ...cfg, item: mediaItems.find(entry => entry.platform === cfg.platform) }))
+        .filter(entry => entry.item);
 
+    const existing = [...featuredGrid.querySelectorAll(".featured-card")];
+    if (existing.length === featured.length && existing.every((el, i) => el.getAttribute("href") === featured[i].item.url)) {
+        return;
+    }
+
+    featuredGrid.innerHTML = featured.map(({ platform, pillText, actionLabel, item }) => {
         const isPulzus = platform === "hvg" && item.subCategory === "pulzus";
         const pillClass = isPulzus ? "hvg-pulzus" : platform;
         const resolvedPillText = isPulzus ? "Legfrissebb HVG Pulzus Cikk" : pillText;
@@ -150,6 +158,7 @@ function renderContent() {
                 <p class="empty-state-desc">Próbálj másik keresőszót vagy állítsd vissza az 'Összes' fülre.</p>
             </div>
         `;
+    refreshSectionNav();
 }
 
 function getPlatformBadge(item) {
@@ -215,9 +224,10 @@ function renderSubfilterBar() {
         const count = key === "all"
             ? platformItems.length
             : platformItems.filter(item => item.subCategory === key).length;
-        const activeClass = key === currentSubFilter ? " active" : "";
+        const isActive = key === currentSubFilter;
+        const activeClass = isActive ? " active" : "";
         return `
-            <button type="button" class="subfilter-tab${activeClass}" data-subfilter="${key}">
+            <button type="button" class="subfilter-tab${activeClass}" data-subfilter="${key}" aria-pressed="${isActive}">
                 <span>${text}</span>
                 <span class="tab-count">${count}</span>
             </button>
@@ -227,11 +237,19 @@ function renderSubfilterBar() {
     bar.setAttribute("data-platform", currentFilter);
     bar.innerHTML = `
         <span class="subfilter-label">${config.label}</span>
-        <div class="subfilter-buttons">${buttonsHtml}</div>
+        <div class="subfilter-buttons" role="group" aria-label="Alszűrők">${buttonsHtml}</div>
     `;
 }
 
 function initFilters() {
+    const setActiveTab = (root, selector, activeEl) => {
+        root.querySelectorAll(selector).forEach(t => {
+            const isActive = t === activeEl;
+            t.classList.toggle("active", isActive);
+            t.setAttribute("aria-pressed", String(isActive));
+        });
+    };
+
     const filterGroup = document.querySelector(".filter-group");
     if (filterGroup) {
         filterGroup.querySelectorAll(".filter-tab[data-filter]").forEach(tab => {
@@ -246,8 +264,7 @@ function initFilters() {
         filterGroup.addEventListener("click", e => {
             const tab = e.target.closest(".filter-tab[data-filter]");
             if (!tab) return;
-            filterGroup.querySelectorAll(".filter-tab").forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
+            setActiveTab(filterGroup, ".filter-tab", tab);
             currentFilter = tab.getAttribute("data-filter");
             currentSubFilter = "all";
             renderSubfilterBar();
@@ -260,8 +277,7 @@ function initFilters() {
         subfilterBar.addEventListener("click", e => {
             const subTab = e.target.closest(".subfilter-tab[data-subfilter]");
             if (!subTab) return;
-            subfilterBar.querySelectorAll(".subfilter-tab").forEach(t => t.classList.remove("active"));
-            subTab.classList.add("active");
+            setActiveTab(subfilterBar, ".subfilter-tab", subTab);
             currentSubFilter = subTab.getAttribute("data-subfilter");
             renderContent();
         });
@@ -280,8 +296,13 @@ function initSearch() {
 
 function initEmailCopy() {
     document.querySelectorAll(".protected-contact").forEach(contact => {
+        const textSpan = contact.querySelector("span") || contact;
+        const defaultLabel = textSpan.textContent;
+
         contact.addEventListener("click", e => {
             e.preventDefault();
+            if (contact.disabled) return;
+
             const u = contact.getAttribute("data-u");
             const d = contact.getAttribute("data-d");
             if (!u || !d) return;
@@ -293,16 +314,14 @@ function initEmailCopy() {
             }
 
             navigator.clipboard.writeText(email).then(() => {
-                const textSpan = contact.querySelector("span") || contact;
-                const originalText = textSpan.textContent;
                 textSpan.textContent = "Cím másolva!";
-                contact.style.pointerEvents = "none";
-                contact.style.color = "#4ade80";
+                contact.disabled = true;
+                contact.classList.add("is-copied");
 
                 setTimeout(() => {
-                    textSpan.textContent = originalText;
-                    contact.style.pointerEvents = "";
-                    contact.style.color = "";
+                    textSpan.textContent = defaultLabel;
+                    contact.disabled = false;
+                    contact.classList.remove("is-copied");
                 }, 2000);
             }).catch(() => {
                 window.location.href = `mailto:${email}`;
@@ -311,9 +330,79 @@ function initEmailCopy() {
     });
 }
 
+function initSectionNav() {
+    const nav = document.getElementById("sectionNav");
+    if (!nav) return;
+
+    const linksWrap = nav.querySelector(".section-nav-links");
+    const items = [...nav.querySelectorAll(".section-nav-link[href^='#']")]
+        .map(link => ({ link, section: document.querySelector(link.getAttribute("href")) }))
+        .filter(entry => entry.section);
+    if (!items.length) return;
+
+    let ticking = false;
+    let lastActiveId = null;
+
+    const update = () => {
+        ticking = false;
+        const isStuck = window.scrollY > 0 && nav.getBoundingClientRect().top <= 1;
+        nav.classList.toggle("is-stuck", isStuck);
+
+        let activeId = "";
+        if (isStuck) {
+            const triggerY = nav.getBoundingClientRect().bottom + 48;
+            const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+            if (atBottom) {
+                activeId = items[items.length - 1].section.id;
+            } else {
+                activeId = items[0].section.id;
+                for (const { section } of items) {
+                    if (section.getBoundingClientRect().top <= triggerY) {
+                        activeId = section.id;
+                    }
+                }
+            }
+        }
+
+        if (activeId !== lastActiveId) {
+            lastActiveId = activeId;
+            items.forEach(({ link, section }) => {
+                const isActive = section.id === activeId;
+                link.classList.toggle("active", isActive);
+                if (isActive) {
+                    link.setAttribute("aria-current", "location");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+
+            if (linksWrap && linksWrap.scrollWidth > linksWrap.clientWidth) {
+                const activeLink = items.find(entry => entry.section.id === activeId)?.link;
+                const targetLeft = activeLink
+                    ? Math.max(0, activeLink.offsetLeft - (linksWrap.clientWidth - activeLink.offsetWidth) / 2)
+                    : 0;
+                const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+                linksWrap.scrollTo({ left: targetLeft, behavior });
+            }
+        }
+    };
+
+    const onScroll = () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    refreshSectionNav = onScroll;
+    update();
+}
+
 function formatDate(iso) {
     const [y, m, d] = (iso || "").split("-");
-    return m && MONTHS[+m - 1] ? `${y}. ${MONTHS[+m - 1]} ${d}.` : (iso || "");
+    return m && d && MONTHS[+m - 1] ? `${y}. ${MONTHS[+m - 1]} ${+d}.` : (iso || "");
 }
 
 function normalizeText(text) {
